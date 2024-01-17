@@ -4,24 +4,19 @@ body {
     padding: 0;
     display: flex;
     font-family: "Baloo-Regular", Helvetica;
+    width: 100%;
+    height: 100%;
   }
   
   .sidebar {
     background-color: transparent;
     
-    
+    height: 60vh;
     width: 500px;
     
   }
   
-  .main {
-    flex: 1;
-    padding: 20px;
-    background-color: transparent;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+
   
   .sopra {
     background-color: transparent;
@@ -30,7 +25,7 @@ body {
     justify-content: start;
     width: 500px;
     margin: 20px;
-    height: 50px;
+    height: 30px;
   }
   
   
@@ -43,7 +38,7 @@ body {
     gap: 20px;
     width: 500px;
     margin: 20px;
-    height: 100px;
+    height: fit-content;
     padding:20px;
     border-radius: 20px;
   }
@@ -57,7 +52,7 @@ body {
    
     width: 500px;
     margin: 20px;
-    height: 90vh;
+    height: 65vh;
     padding:20px;
     border-radius: 20px;
   }
@@ -114,8 +109,24 @@ body {
     justify-content: start;
    
     width: 460px;
-    margin: 20px;
+    margin: 10px;
     height: 60vh;
     padding:20px;
     border-radius: 20px;
   }
+  .playlist .images div img{
+    height: 40px;
+    width: 40px;
+  }
+ .playlist .images div{
+  height: 50px;
+  width: 400px;
+  margin-bottom: 5px;
+ }
+ .tuaplaylist{
+  text-align: left;
+  display: flex;
+  align-items: center;
+ gap: 15px;
+
+ }
