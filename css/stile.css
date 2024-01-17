@@ -1,0 +1,121 @@
+body {
+    background-color: #1d1d1d;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    font-family: "Baloo-Regular", Helvetica;
+  }
+  
+  .sidebar {
+    background-color: transparent;
+    
+    
+    width: 500px;
+    
+  }
+  
+  .main {
+    flex: 1;
+    padding: 20px;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .sopra {
+    background-color: transparent;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    width: 500px;
+    margin: 20px;
+    height: 50px;
+  }
+  
+  
+  .home{
+    background-color: #1f1f1f;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: baseline;
+    gap: 20px;
+    width: 500px;
+    margin: 20px;
+    height: 100px;
+    padding:20px;
+    border-radius: 20px;
+  }
+  
+  .libreria{
+    background-color: #1f1f1f;
+    display: flex;
+    flex-direction: column;
+    
+    justify-content: start;
+   
+    width: 500px;
+    margin: 20px;
+    height: 90vh;
+    padding:20px;
+    border-radius: 20px;
+  }
+  .icon{
+    background-color: #1f1f1f;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    gap: 20px;
+    height: fit-content;
+  }
+  .buttons{
+    background-color: #1f1f1f;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 300px;
+    padding-top: 15px;
+    
+    height: 90px;
+    
+    
+  }
+  #Playlist,#Quiz{
+    width: 80px;
+    height: 40px;
+    margin: 10px;
+    border-radius: 30px;
+    background-color:#131313;
+    color: white;
+  }
+  
+  #Quiz:hover {
+    background-color: white;
+    color: #131313;
+  }
+  #Playlist:hover{
+    background-color: white;
+    color: #131313;
+  }
+  .active{
+    background-color: white;
+    color: #131313;
+  }
+  p {
+    color: white;
+  }
+  .playlist{
+    background-color: #1f1f1f;
+    display: flex;
+    flex-direction: column;
+    
+    justify-content: start;
+   
+    width: 460px;
+    margin: 20px;
+    height: 60vh;
+    padding:20px;
+    border-radius: 20px;
+  }
