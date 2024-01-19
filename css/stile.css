@@ -26,6 +26,10 @@ body {
     width: 500px;
     margin: 20px;
     height: 30px;
+    
+  }
+  .sopra i{
+    margin-left: 20px;
   }
   
   
@@ -80,7 +84,9 @@ body {
   #Playlist,#Quiz{
     width: 80px;
     height: 40px;
-    margin: 10px;
+    margin-top: 10px;
+    margin-left: 0;
+    margin-right: 10px;
     border-radius: 30px;
     background-color:#131313;
     color: white;
@@ -109,24 +115,65 @@ body {
     justify-content: start;
    
     width: 460px;
-    margin: 10px;
-    height: 60vh;
-    padding:20px;
+    margin-top: 10px;
+    margin-left: 0;
+    height: 300px;
+    padding-left: 0;
+    padding-top: 20px;
     border-radius: 20px;
+  }
+  .playlist .images{
+    width: 460px;
+    margin: 0;
+    height: 280px;
   }
   .playlist .images div img{
     height: 40px;
     width: 40px;
   }
  .playlist .images div{
-  height: 50px;
+  height: 47px;
   width: 400px;
-  margin-bottom: 5px;
+  margin-bottom: 6px;
  }
  .tuaplaylist{
   text-align: left;
   display: flex;
   align-items: center;
- gap: 15px;
+ gap: 19px;
 
  }
+ .Olivia,.Popsmoke,.Scorpion,.Starboy{
+  display: flex;
+  flex: row;
+  gap: 19px;
+ }
+ .Olivia img{
+  border-radius: 20px;
+ }
+ .Popsmoke img{
+  border-radius: 20px;
+ }
+ .Scorpion img{
+  border-radius: 20px;
+ }
+ .Starboy img{
+  border-radius: 20px;
+ }
+ .testo{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 47px;
+  padding: 0;
+ 
+ }
+ .testo h4{
+  margin: 0;
+  color: white;
+ }
+.testo p{
+  margin: 0;
+  
+}
+
