@@ -1,3 +1,5 @@
+<?php
+
 $servername = "localhost";
 
 $username = "root";
@@ -21,3 +23,4 @@ if ($conn->connect_error) {
 }
 
 
+?>
