@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Visualizza Brani e Album Spotify</title>
-    <link rel="stylesheet" href="css/prova.css">
+    <link rel="stylesheet" href="css/ascolto.css">
 </head>
 <body>
 
@@ -26,10 +26,16 @@
         <ul id="lista-album"></ul>
     </div>
 
+    <div id="anteprima">
+        <h2>Anteprima Brano</h2>
+        <div id="copertina"></div>
+        <audio id="audio" controls></audio>
+    </div>
+
     <script>
         const clientId = 'bcef94d787dc4b9a96d6a84aa5ee8202';
-        const redirectUri = 'window.location.href'; // Configurala nel Pannello Sviluppatori di Spotify
-        const scopes = 'user-read-private user-read-email user-library-read'; // Aggiungi gli scope necessari per la visualizzazione dei brani e degli album
+        const redirectUri = 'http://localhost/Terranova-SoundbyteNexus/ascolto2.html'; // Configurala nel Pannello Sviluppatori di Spotify
+        const scopes = 'user-read-private user-read-email user-library-read streaming'; // Aggiungi gli scope necessari
 
         function autorizzaSpotify() {
             const urlAutorizzazione = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&redirect_uri=${encodeURIComponent(redirectUri)}&scope=${encodeURIComponent(scopes)}`;
@@ -73,8 +79,10 @@
                 data.items.forEach(item => {
                     const nomeBrano = item.track.name;
                     const artista = item.track.artists.map(artist => artist.name).join(', ');
+                    const uriBrano = item.track.uri;
+                    const copertinaBrano = item.track.album.images[0].url;
                     const listItem = document.createElement('li');
-                    listItem.textContent = `${nomeBrano} - ${artista}`;
+                    listItem.innerHTML = `<p>${nomeBrano} - ${artista}</p><button onclick="avviaAnteprima('${uriBrano}', '${copertinaBrano}')">Ascolta</button>`;
                     listaBrani.appendChild(listItem);
                 });
             })
@@ -93,12 +101,26 @@
                 data.items.forEach(item => {
                     const nomeAlbum = item.album.name;
                     const artista = item.album.artists.map(artist => artist.name).join(', ');
+                    const uriAlbum = item.album.uri;
+                    const copertinaAlbum = item.album.images[0].url;
                     const listItem = document.createElement('li');
-                    listItem.textContent = `${nomeAlbum} - ${artista}`;
+                    listItem.innerHTML = `<p>${nomeAlbum} - ${artista}</p><button onclick="avviaAnteprima('${uriAlbum}', '${copertinaAlbum}')">Ascolta</button>`;
                     listaAlbum.appendChild(listItem);
                 });
             })
             .catch(error => console.error('Errore nel recupero degli album da Spotify API', error));
+        }
+
+        function avviaAnteprima(uri, copertina) {
+            const anteprimaDiv = document.getElementById('anteprima');
+            const copertinaDiv = document.getElementById('copertina');
+            const audioElement = document.getElementById('audio');
+
+            copertinaDiv.innerHTML = `<img src="${copertina}" alt="Copertina">`;
+
+            // Esegui il playback del brano o album
+            audioElement.src = `https://open.spotify.com/embed/track/${uri.split(':')[2]}`;
+            audioElement.play();
         }
 
         // Chiamata per gestire l'autorizzazione al caricamento della pagina
