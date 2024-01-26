@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/">
+
+    <title>Esempio API Spotify</title>
+</head>
+<body>
+
+    <h1>Esempio API Spotify</h1>
+    
+    <button onclick="autorizzaSpotify()">Autorizza con Spotify</button>
+    
+    <div id="info-spotify">
+        <!-- Le informazioni di Spotify verranno visualizzate qui -->
+    </div>
+
+    <script>
+        const clientId = 'bcef94d787dc4b9a96d6a84aa5ee8202';
+        const redirectUri = 'http://localhost/Terranovainnocenti/Terranova-SoundbyteNexus/terranova.html'; // Configurala nel Pannello Sviluppatori di Spotify
+        const scopes = 'user-read-private user-read-email'; // Aggiungi gli scope necessari
+
+        function autorizzaSpotify() {
+            const urlAutorizzazione = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&redirect_uri=${encodeURIComponent(redirectUri)}&scope=${encodeURIComponent(scopes)}`;
+            window.location.href = urlAutorizzazione;
+        }
+
+        function gestisciAutorizzazione() {
+            const parametri = new URLSearchParams(window.location.hash.substring(1));
+            const accessToken = parametri.get('access_token');
+            
+            if (accessToken) {
+                ottieniDatiSpotify(accessToken);
+            }
+        }
+
+        function ottieniDatiSpotify(accessToken) {
+            fetch('https://api.spotify.com/v1/me', {
+                headers: {
+                    'Authorization': `Bearer ${accessToken}`
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                const infoSpotify = document.getElementById('info-spotify');
+                infoSpotify.innerHTML = `<p>Utente Spotify: ${data.display_name}</p>`;
+            })
+            .catch(error => console.error('Errore nel recupero dei dati da Spotify API', error));
+        }
+
+        // Chiamata per gestire l'autorizzazione al caricamento della pagina
+        gestisciAutorizzazione();
+    </script>
+
+</body>
+</html>
