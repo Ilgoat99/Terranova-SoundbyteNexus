@@ -1,0 +1,46 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+h1 {
+    color: #1DB954;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #1DB954;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+#info-spotify {
+    margin-top: 20px;
+}
+
+#brani,
+#album {
+    margin-top: 20px;
+}
+
+h2 {
+    color: #333;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    margin: 10px 0;
+    font-size: 16px;
+    color: #333;
+}
+
+/* Aggiungi stili extra se necessario */

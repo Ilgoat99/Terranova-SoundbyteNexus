@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizza Brani e Album Spotify</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-BxH8Ga5IXf6kZfF7eVNUASO3Gik9vLz5yRw8n5bA7FJt5Ii8cMqQ2TJ1x38BGSqI" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/new.css">
+</head>
+<body>
+
+    <h1>Visualizza Brani e Album Spotify</h1>
+
+    <button onclick="autorizzaSpotify()">Autorizza con Spotify</button>
+
+    <input type="text" id="input-ricerca" placeholder="Cerca brani">
+    <button onclick="cercaBrani()">Cerca</button>
+
+
+    <div id="info-spotify">
+        <i id="icona-utente" class="fas fa-user"></i> <!-- Icona utente -->
+        <p id="nome-utente">Utente Spotify: Nome Utente</p>
+        <img id="immagine-profilo" src="img/user-regular-24.png" alt="Immagine Profilo">
+    </div>
+
+    <div id="info-spotify">
+        <!-- Le informazioni di Spotify verranno visualizzate qui -->
+    </div>
+
+    <div id="brani">
+        <h2>Brani:</h2>
+        <ul id="lista-brani"></ul>
+    </div>
+
+    <div id="album">
+        <h2>Album:</h2>
+        <ul id="lista-album"></ul>
+    </div>
+
+    <div id="anteprima">
+        <h2>Anteprima Brano</h2>
+        <div id="copertina"></div>
+        <audio id="audio" controls></audio>
+    </div>
+
+    <script>
+        const clientId = 'bcef94d787dc4b9a96d6a84aa5ee8202';
+        const redirectUri = 'http://localhost/Terranova-SoundbyteNexus/new.html'; 
+        const scopes = 'user-read-private user-read-email user-library-read streaming'; 
+
+        function autorizzaSpotify() {
+            const urlAutorizzazione = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&redirect_uri=${encodeURIComponent(redirectUri)}&scope=${encodeURIComponent(scopes)}`;
+            window.location.href = urlAutorizzazione;
+        }
+
+        function gestisciAutorizzazione() {
+            const parametri = new URLSearchParams(window.location.hash.substring(1));
+            const accessToken = parametri.get('access_token');
+            
+            if (accessToken) {
+                ottieniDatiSpotify(accessToken);
+                visualizzaBrani(accessToken);
+                visualizzaAlbum(accessToken);
+                gestisciIconaUtente(); // Aggiunta chiamata alla funzione di gestione icona utente
+            }
+        }
+
+        function ottieniAccessToken() {
+            // Questa funzione dovrebbe essere implementata su un server di backend sicuro
+            // e non direttamente nel codice JavaScript lato client.
+            // Ritorna l'access token in modo sicuro.
+            return 'IL_TUO_ACCESS_TOKEN';
+        }
+
+        function ottieniDatiSpotify(accessToken) {
+            fetch('https://api.spotify.com/v1/me', {
+                headers: {
+                    'Authorization': `Bearer ${accessToken}`
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                const infoSpotify = document.getElementById('info-spotify');
+                infoSpotify.innerHTML = `
+                    <p>Utente Spotify: ${data.display_name}</p>
+                    <img src="${data.images[0].url}" alt="Immagine Profilo">
+                `;
+            })
+            .catch(error => console.error('Errore nel recupero dei dati da Spotify API', error));
+        }
+
+        function visualizzaBrani(accessToken) {
+            fetch('https://api.spotify.com/v1/me/tracks', {
+                headers: {
+                    'Authorization': `Bearer ${accessToken}`
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                const listaBrani = document.getElementById('lista-brani');
+                listaBrani.innerHTML = '';
+                data.items.forEach(item => {
+                    const nomeBrano = item.track.name;
+                    const artista = item.track.artists.map(artist => artist.name).join(', ');
+                    const uriBrano = item.track.uri;
+                    const copertinaBrano = item.track.album.images[0].url;
+                    const listItem = document.createElement('li');
+                    listItem.innerHTML = `<p>${nomeBrano} - ${artista}</p><button onclick="avviaAnteprima('${uriBrano}', '${copertinaBrano}')">Ascolta</button>`;
+                    listaBrani.appendChild(listItem);
+                });
+            })
+            .catch(error => console.error('Errore nel recupero dei brani da Spotify API', error));
+        }
+
+        function visualizzaAlbum(accessToken) {
+            fetch('https://api.spotify.com/v1/me/albums', {
+                headers: {
+                    'Authorization': `Bearer ${accessToken}`
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                const listaAlbum = document.getElementById('lista-album');
+                listaAlbum.innerHTML = '';
+                data.items.forEach(item => {
+                    const nomeAlbum = item.album.name;
+                    const artista = item.album.artists.map(artist => artist.name).join(', ');
+                    const uriAlbum = item.album.uri;
+                    const copertinaAlbum = item.album.images[0].url;
+                    const listItem = document.createElement('li');
+                    listItem.innerHTML = `<p>${nomeAlbum} - ${artista}</p><button onclick="avviaAnteprima('${uriAlbum}', '${copertinaAlbum}')">Ascolta</button>`;
+                    listaAlbum.appendChild(listItem);
+                });
+            })
+            .catch(error => console.error('Errore nel recupero degli album da Spotify API', error));
+        }
+
+        function avviaAnteprima(uri, copertina) {
+            const anteprimaDiv = document.getElementById('anteprima');
+            const copertinaDiv = document.getElementById('copertina');
+            const audioElement = document.getElementById('audio');
+
+            copertinaDiv.innerHTML = `<img src="${copertina}" alt="Copertina">`;
+
+            // Esegui il playback del brano o album
+            audioElement.src = `https://open.spotify.com/embed/track/${uri.split(':')[2]}`;
+            audioElement.play();
+        }
+
+        function gestisciIconaUtente() {
+            const iconaUtente = document.getElementById('icona-utente');
+            if (iconaUtente) {
+                iconaUtente.classList.remove('fa-user');
+                iconaUtente.classList.add('fa-spotify');
+            }
+        }
+
+        function cercaBrani() {
+            const inputRicerca = document.getElementById('input-ricerca');
+            const termineRicerca = inputRicerca.value.trim();
+
+            if (termineRicerca !== '') {
+                fetch(`https://api.spotify.com/v1/search?q=${encodeURIComponent(termineRicerca)}&type=track`, {
+                    headers: {
+                        'Authorization': `Bearer ${ottieniAccessToken()}`
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    visualizzaRisultati(data.tracks.items);
+                })
+                .catch(error => console.error('Errore nella ricerca di brani su Spotify API', error));
+            }
+        }
+
+        function visualizzaRisultati(risultati) {
+            const listaBrani = document.getElementById('lista-brani');
+            listaBrani.innerHTML = '';
+
+            risultati.forEach(brano => {
+                const nomeBrano = brano.name;
+                const artista = brano.artists.map(artist => artist.name).join(', ');
+                const uriBrano = brano.uri;
+                const copertinaBrano = brano.album.images[0].url;
+                const listItem = document.createElement('li');
+                listItem.innerHTML = `<p>${nomeBrano} - ${artista}</p><button onclick="avviaAnteprima('${uriBrano}', '${copertinaBrano}')">Ascolta</button>`;
+                listaBrani.appendChild(listItem);
+            });
+        }
+
+        // Chiamata per gestire l'autorizzazione al caricamento della pagina
+        gestisciAutorizzazione();
+    </script>
+
+</body>
+</html>

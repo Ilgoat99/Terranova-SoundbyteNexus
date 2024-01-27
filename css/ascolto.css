@@ -1,0 +1,88 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+h1 {
+    color: #1DB954;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #1DB954;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #4caf50;
+}
+
+#info-spotify {
+    margin-top: 20px;
+}
+
+#brani,
+#album {
+    margin-top: 20px;
+}
+
+h2 {
+    color: #333;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    margin: 10px 0;
+    font-size: 16px;
+    color: #333;
+}
+
+#anteprima {
+    margin-top: 20px;
+}
+
+#copertina {
+    max-width: 300px;
+    margin-bottom: 10px;
+}
+
+#audio {
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* Stile per immagini */
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Stile per pulsanti di ascolto */
+.ascolta-button {
+    background-color: #1DB954;
+    color: #fff;
+    padding: 8px 16px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.ascolta-button:hover {
+    background-color: #4caf50;
+}
+
+/* Aggiungi stili extra se necessario */
