@@ -11,15 +11,27 @@ body {
   }
   .nav{
     height: 50px;
-    width: 98%;
+    width: 97%;
     padding: 4px;
     display: flex;
     justify-content: space-between;
-    margin: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 7px;
+    margin-right: 7px;
+
   }
   .nav i{
     margin: 15px;
   }
+  .nav:first-child{
+    margin-left: 20px;
+  }
+  .nav:last-child{
+    margin-right: 20px;
+  }
+
+
   .nav #moon{
     display: none;
   }
@@ -34,18 +46,9 @@ body {
   
 
   
-  .sopra {
-    background-color: transparent;
-    display: flex;
-    flex-direction: row;
-    justify-content: start;
-    width: 300px;
-    
-    height: 30px;
-    
-  }
+ 
   .sopra i{
-    margin-left: 20px;
+    margin-left: 0px;
   }
   .menu{
     height: 500px;
@@ -88,42 +91,7 @@ body {
     gap: 20px;
     height: fit-content;
   }
-  .buttons{
-    background-color: #1f1f1f;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    width: 300px;
-    padding-top: 15px;
-    
-    height: 90px;
-    
-    
-  }
-  .btn{
-    width: 80px;
-    height: 40px;
-    margin-top: 10px;
-    margin-left: 0;
-    margin-right: 10px;
-    border-radius: 30px;
-    background-color:#131313;
-    color: white;
-    overflow: hidden;
 
-  }
-  
-  .btn:hover {
-    background-color: white;
-    color: #131313;
-    transition: 0.7s;
-  }
-
- 
-  .active{
-    background-color: white;
-    color: #131313;
-  }
   p {
     color: white;
   }
@@ -154,19 +122,19 @@ body {
  .playlist .images div{
   height: 47px;
   width: 300px;
-  margin-bottom: 6px;
+  margin-bottom: 13px;
  }
  .tuaplaylist{
   text-align: left;
   display: flex;
   align-items: center;
- gap: 19px;
+  gap: 29px;
 
  }
  .Olivia,.Popsmoke,.Scorpion,.Starboy{
   display: flex;
   flex: row;
-  gap: 19px;
+  gap: 29px;
  }
  .Olivia img{
   border-radius: 20px;
@@ -213,17 +181,57 @@ main{
 .ricerca{
   width: 930px;
   height: 50px;
-  border: 1px solid black;
+  
   margin: 10px;
   display: flex;
   justify-content: space-between;
   flex-direction: row;
+  align-items: baseline;
   padding: 5px;
+  
 }
 .barra{
-  height: 40px;
-  width: 250px;
-  border: 1px solid black;
-  margin: 5px;
+  display: flex;
+  height: 35px;
+  width: 400px;
+  
+  
   margin-left: 70px;
+  background-color: #12202a;
+  border-radius: 13px;
+  
+  
+  align-content: flex-start;
+  align-items: center;
+ border: #12202a 1px solid;
+
+}
+.barra button{
+  background-color: transparent;
+  border: none;
+  height: 35px;
+  border-top-left-radius: 13px; 
+  border-bottom-left-radius: 13px; 
+  padding-top: 5px;
+  cursor: pointer;
+  transition: background-color 0.7s;
+}
+.ric{
+  height: 30px;
+  background-color: transparent;
+  border: none;
+  width: 358px;
+  border-radius: 10px;
+  color: white;
+  outline: none;
+}
+.barra button:hover{
+  background-color: #0a141b;  
+}
+.playlist1{
+  width: 900px;
+  height: 430px;
+  border: black 1px solid;
+  margin-left: 30px;
+  margin-top: 43px;
 }
