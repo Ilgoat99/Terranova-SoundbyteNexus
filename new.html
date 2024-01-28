@@ -37,6 +37,8 @@
         <div id="copertina"></div>
         <audio id="audio" controls onerror="gestisciErroreRiproduzione(event)"></audio>
     </div>
+
+    <button onclick="logout()">Esci</button>
     
 
     <script>
@@ -189,6 +191,17 @@
                 listaBrani.appendChild(listItem);
             });
         }
+
+
+        function logout() {
+        // Rimuovi l'access token salvato (questo è solo un esempio, assicurati di implementare una gestione sicura)
+        localStorage.removeItem('spotifyAccessToken');
+
+        // Ricarica la pagina per "uscire" dall'account
+        window.location.reload();
+    }
+
+    
 
         // Chiamata per gestire l'autorizzazione al caricamento della pagina
         gestisciAutorizzazione();
