@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="css/ez.css">
+
+  <title>Top Tracks</title>
+</head>
+<body>
+
+  <h1>Top Tracks</h1>
+
+  <ul id="trackList">
+    <!-- I brani saranno inseriti qui dinamicamente -->
+  </ul>
+
+  <script>
+    // Authorization token che deve essere stato creato in precedenza
+    const token = 'BQCj7MvPhzPD6J5V9DhXQo2Dd1ku_2VaZP23fKzzRlQfqCLNmZ0bSIdt_qXPkOcaS_hF5be6NiF7FxF-ntWwlZf0lT62hqRKin348P4XTmmDMAxdmnKmkNlZC0qReasTKPngF2LEenVs8BSAVsX6Rer3sUdjETtuX8BfdnEMpeQ0g59x7BmLSYxO5dGiHVRG-2BS8GA40lKLSfNKlWCfPa5M_otRG8h_77uf1hepJvnUkgQLh2LM2KMKVXx4GmiaE2osM553HyHPCqWKc8DvQAU2';
+
+    async function fetchWebApi(endpoint, method, body) {
+      const res = await fetch(`https://api.spotify.com/${endpoint}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        method,
+        body: JSON.stringify(body)
+      });
+      return await res.json();
+    }
+
+    async function getTopTracks() {
+      // Riferimento all'endpoint: https://developer.spotify.com/documentation/web-api/reference/get-users-top-artists-and-tracks
+      return (await fetchWebApi(
+        'v1/me/top/tracks?time_range=long_term&limit=5', 'GET'
+      )).items;
+    }
+
+    const topTracks = await getTopTracks();
+    const trackListElement = document.getElementById('trackList');
+
+    topTracks.forEach(({ name, artists }) => {
+      const trackItem = document.createElement('li');
+      trackItem.textContent = `${name} by ${artists.map(artist => artist.name).join(', ')}`;
+      trackListElement.appendChild(trackItem);
+    });
+  </script>
+
+</body>
+</html>

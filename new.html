@@ -32,16 +32,12 @@
         <ul id="lista-brani"></ul>
     </div>
 
-    <div id="album">
-        <h2>Album:</h2>
-        <ul id="lista-album"></ul>
-    </div>
-
     <div id="anteprima">
         <h2>Anteprima Brano</h2>
         <div id="copertina"></div>
-        <audio id="audio" controls></audio>
+        <audio id="audio" controls onerror="gestisciErroreRiproduzione(event)"></audio>
     </div>
+    
 
     <script>
         const clientId = 'bcef94d787dc4b9a96d6a84aa5ee8202';
@@ -142,9 +138,15 @@
 
             copertinaDiv.innerHTML = `<img src="${copertina}" alt="Copertina">`;
 
-            // Esegui il playback del brano o album
             audioElement.src = `https://open.spotify.com/embed/track/${uri.split(':')[2]}`;
             audioElement.play();
+        }
+
+
+
+        function gestisciErroreRiproduzione(event) {
+            console.error('Errore durante la riproduzione:', event);
+            // Aggiungi qui ulteriori azioni in risposta all'errore di riproduzione, se necessario
         }
 
         function gestisciIconaUtente() {

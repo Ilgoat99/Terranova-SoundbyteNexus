@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/ez.css">
+    <title>Spotify API Demo</title>
+</head>
+<body>
+    <h1>Spotify API Demo</h1>
+    
+    <button onclick="searchTracks()">Search Tracks</button>
+    <div id="tracks"></div>
+
+    <button onclick="searchAlbums()">Search Albums</button>
+    <div id="albums"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        const clientId = 'bcef94d787dc4b9a96d6a84aa5ee8202';
+        const redirectUri = 'http://localhost/Terranova-SoundbyteNexus/ez.html';  // Your redirect URI
+        const responseType = 'token';
+        const scope = 'user-read-private user-read-email';  // Adjust the scope as needed
+
+        function searchTracks() {
+            const accessToken = getAccessToken();
+
+            axios.get('https://api.spotify.com/v1/search', {
+                params: {
+                    q: 'track',
+                    type: 'track',
+                },
+                headers: {
+                    'Authorization': `Bearer ${accessToken}`
+                }
+            })
+            .then(response => {
+                const tracks = response.data.tracks.items;
+                displayResults('tracks', tracks);
+            })
+            .catch(error => {
+                console.error('Error fetching tracks:', error);
+            });
+        }
+
+        function searchAlbums() {
+            const accessToken = getAccessToken();
+
+            axios.get('https://api.spotify.com/v1/search', {
+                params: {
+                    q: 'album',
+                    type: 'album',
+                },
+                headers: {
+                    'Authorization': `Bearer ${accessToken}`
+                }
+            })
+            .then(response => {
+                const albums = response.data.albums.items;
+                displayResults('albums', albums);
+            })
+            .catch(error => {
+                console.error('Error fetching albums:', error);
+            });
+        }
+
+        function getAccessToken() {
+            const hashParams = window.location.hash.substring(1).split('&');
+            let token = null;
+
+            for (let i = 0; i < hashParams.length; i++) {
+                const [key, value] = hashParams[i].split('=');
+                if (key === 'access_token') {
+                    token = value;
+                    break;
+                }
+            }
+
+            return token;
+        }
+
+        function displayResults(containerId, items) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = '';
+
+            if (items.length === 0) {
+                container.innerHTML = 'No results found.';
+                return;
+            }
+
+            const ul = document.createElement('ul');
+            items.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item.name;
+
+                if (item.preview_url) {
+                    const previewButton = document.createElement('button');
+                    previewButton.textContent = 'Preview';
+                    previewButton.addEventListener('click', () => playPreview(item.preview_url));
+                    li.appendChild(previewButton);
+                }
+
+                ul.appendChild(li);
+            });
+
+            container.appendChild(ul);
+        }
+
+        function playPreview(previewUrl) {
+            const audio = new Audio(previewUrl);
+            audio.play();
+        }
+    </script>
+</body>
+</html>

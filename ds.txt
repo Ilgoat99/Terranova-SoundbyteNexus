@@ -1,0 +1,5 @@
+ <div id="anteprima">
+        <h2>Anteprima Brano</h2>
+        <div id="copertina"></div>
+        <audio id="audio" controls onerror="gestisciErroreRiproduzione(event)"></audio>
+    </div>
