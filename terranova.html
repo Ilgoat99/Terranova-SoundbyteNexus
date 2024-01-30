@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="css/stile.css" />
     <script defer src="js/stile.js"></script>
     
-
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   </head>
   <body>
@@ -18,12 +17,12 @@
     <main><div class="sidebar">
       <div class="menu">
         <div class="home">
-          <i class='bx bxs-home bx-sm' style='color:#ffffff; ' ></i>
+          <i class='bx bxs-home bx-md' style='color:#ffffff; ' ></i>
           <p>Home</p>
         </div>
         <div class="libreria">
           <div class="icon">
-          <i class='bx bx-library bx-sm' style='color:#ffffff'  ></i>
+          <i class='bx bx-library bx-md' style='color:#ffffff'  ></i>
           <p>La tua libreria</p>
         </div> 
           
@@ -35,47 +34,57 @@
               </div>
               <div class="Olivia">
                 <img src="img/rodrigo.jpg" alt="" srcset="">
-                <div class="testo">
-                  <h4>Olivia Rodrigo</h4>
-                  <p>Artista</p>
-                </div>
+                
               </div><div class="Popsmoke">
                 <img src="img/popsmoke.jpg" alt="" srcset="">
-                <div class="testo">
-                  <h4>Pop Smoke</h4>
-                  <p>Artista</p>
-                </div>
+                
               </div><div class="Scorpion">
                 <img src="img/scorpion.jpg" alt="" srcset="">
-                <div class="testo">
-                  <h4>Scorpion</h4>
-                  <p>Album</p>
-                </div>
+                
               </div><div class="Starboy">
                 <img src="img/starboy.jpg" alt="" srcset="">
-                <div class="testo">
-                  <h4>Starboy</h4>
-                  <p>Album</p>
-                </div>
-              </div>
-              
-
+               
+             
+          
+        
             </div>
           </div>
         </div>
-
+        </div>
       </div>
     </div>
     <div class="main">
       <div class="ricerca">
         <div class="barra">
-          <button class="search-button"><i class='bx bx-search bx-sm' style='color:#ffffff'  ></i></button>
+          <button class="search-button" onclick="searchTracks()"><i class='bx bx-search bx-sm' style='color:#ffffff'  ></i></button>
           <input type="text" class="ric" placeholder="Cerca...">
         </div>
-        <i class='bx bx-user-circle  bx-md' style='color:#ffffff'></i>
+        <button" class="user" id="user" onclick="authorizeSpotify()"><i class='bx bx-user-circle  bx-md' style='color:#ffffff'></i></button>
+        <div id="profile-image"></div>
       </div>
-      <section class="playlist1"></section>
-      <section class="quiz"></section>
+      <section class="quiz">
+        <div class="title">
+          <h1>Quiz</h1>
+          <button class="bottoneplaylist"><i class='bx bxs-playlist bx-md' style='color:#ffffff'  ></i></button>
+        </div>
+        <div class="sopra">
+          
+       
+       
+          
+            
+          </div>
+        
+
+         
+          
+      
+
+        <div class="sotto">
+          
+
+        </div>
+      </section>
     </div>
   </main>
     
@@ -84,4 +93,3 @@
       
   </body>
 </html>
-ds
