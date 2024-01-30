@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spotify Search</title>
+</head>
+<body>
+  <h1>Spotify Search</h1>
+
+  <!-- Form per la ricerca di brani -->
+  <form id="searchForm">
+    <label for="searchInput">Cerca brani:</label>
+    <input type="text" id="searchInput" required>
+    <button type="submit">Cerca</button>
+  </form>
+
+  <!-- Risultati della ricerca -->
+  <div id="searchResults"></div>
+
+  <!-- Bottone di accesso a Spotify -->
+  <button id="loginButton">Accedi con Spotify</button>
+
+  <script>
+    // Codice JavaScript per gestire la ricerca e l'accesso a Spotify
+
+    // Inizializza le tue chiavi API Spotify
+    const clientId = 'TUA_CLIENT_ID';
+    const redirectUri = 'IL_TUO_REDIRECT_URI';
+    const scope = 'user-read-private user-read-email';
+
+    // URL per l'autenticazione OAuth di Spotify
+    const authUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scope}&response_type=token&show_dialog=true`;
+
+    // Funzione per gestire il clic sul pulsante di accesso
+    document.getElementById('loginButton').addEventListener('click', () => {
+      window.location.href = authUrl;
+    });
+
+    // Funzione per gestire la ricerca di brani
+    document.getElementById('searchForm').addEventListener('submit', (event) => {
+      event.preventDefault();
+      const searchTerm = document.getElementById('searchInput').value;
+      // Aggiungi il codice per la chiamata API di Spotify qui
+      // Utilizza l'access token ottenuto durante l'autenticazione per le richieste API
+    });
+
+    // Aggiungi ulteriori funzioni per la gestione delle chiamate API di Spotify
+
+  </script>
+</body>
+</html>

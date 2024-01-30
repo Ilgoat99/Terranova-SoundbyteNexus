@@ -1,46 +1,49 @@
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
+    margin: 20px;
     text-align: center;
-}
-
-h1 {
+  }
+  
+  h1 {
     color: #1DB954;
-}
-
-button {
+  }
+  
+  #login-container {
+    margin-top: 20px;
+  }
+  
+  button {
     padding: 10px 20px;
     font-size: 16px;
     background-color: #1DB954;
     color: #fff;
     border: none;
     cursor: pointer;
-}
-
-#info-spotify {
+  }
+  
+  #player-container {
+    margin-top: 30px;
+  }
+  
+  h2 {
+    color: #1DB954;
     margin-top: 20px;
-}
-
-#brani,
-#album {
-    margin-top: 20px;
-}
-
-h2 {
-    color: #333;
-}
-
-ul {
+  }
+  
+  ul {
     list-style: none;
     padding: 0;
-}
-
-li {
+  }
+  
+  li {
     margin: 10px 0;
-    font-size: 16px;
-    color: #333;
-}
-
-/* Aggiungi stili extra se necessario */
+    font-size: 18px;
+  }
+  
+  audio {
+    width: 100%;
+    margin-top: 10px;
+  }
+  
+  /* Aggiungi eventuali altri stili desiderati */
+  
