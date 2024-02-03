@@ -108,30 +108,32 @@
       display: flex;
       justify-content: center;
       box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
     }
 
-    #search-input {
-      padding: 12px;
-      font-size: 16px;
-      border: none;
-      border-radius: 20px;
-      width: 70%;
-      margin-right: 10px;
-    }
-
-    #search-button {
+    button {
       padding: 12px 24px;
       font-size: 16px;
-      background-color: #fff;
-      color: #1DB954;
+      background-color: #1DB954;
+      color: #fff;
       border: none;
       cursor: pointer;
-      border-radius: 20px;
+      border-radius: 5px;
       transition: background-color 0.3s ease;
     }
 
-    #search-button:hover {
-      background-color: #f4f4f4;
+    button:hover {
+      background-color: #169845;
+    }
+
+    #top-tracks-container {
+      text-align: left;
+      margin: 0 auto;
+      max-width: 600px;
+      background-color: #1d1d1d;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     }
   </style>
 </head>
@@ -166,8 +168,7 @@
   </div>
 
   <div id="bottom-bar">
-    <input type="text" id="search-input" placeholder="Cerca brani...">
-    <button id="search-button" onclick="searchTracks()">Cerca</button>
+    <audio controls id="audio-preview"></audio>
   </div>
 
   <script>
@@ -267,7 +268,8 @@
     }
 
     function playTrack(previewUrl) {
-      document.getElementById('preview-track').innerHTML = `<audio controls id="audio-preview"><source src="${previewUrl}" type="audio/mpeg"></audio>`;
+      document.getElementById('audio-preview').src = previewUrl;
+      document.getElementById('audio-preview').play();
     }
 
     function changeTrack(offset) {
