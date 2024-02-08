@@ -108,7 +108,7 @@ main {
 img{border-radius: 50%;}
 
 .icon,
-.playlist  div,
+.playlist .images div,
 .tuaplaylist {
   display: flex;
   flex-direction: row;
