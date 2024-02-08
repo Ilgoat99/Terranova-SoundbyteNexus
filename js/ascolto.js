@@ -1,5 +1,5 @@
 const CLIENT_ID = 'bcef94d787dc4b9a96d6a84aa5ee8202';
-const REDIRECT_URI = 'http://localhost/yurii/Terranova-SoundbyteNexus/terranova.html';
+const REDIRECT_URI = 'http://localhost/Terranova-SoundbyteNexus/terranova.html';
 const SCOPES = ['user-read-private', 'user-read-email', 'user-top-read'];
 let accessToken;
 let currentPreviewIndex = 0;
@@ -107,12 +107,20 @@ function getTopAlbums() {
     const topAlbumsList = document.getElementById('top-albums');
     topAlbumsList.innerHTML = '';
     data.items.forEach(album => {
-      const listItem = document.createElement('li');
-      listItem.innerHTML = `
-        <img src="${album.images[0].url}" alt="${album.name}" width="50">
-        ${album.name}
-        <button onclick="showAlbumTracks('${album.id}')">Visualizza Tracce</button>`;
-      topAlbumsList.appendChild(listItem);
+      const listItem = document.createElement('div');
+listItem.innerHTML = `
+  <div class="album-container">
+    <div class="image-container">
+      
+      <img src="${album.images[0].url}"  width="50">
+      <div class="name-container">
+      ${album.name}
+    </div>
+    </div>
+    
+  </div>`;
+topAlbumsList.appendChild(listItem);
+
     });
   })
   .catch(error => console.error('Errore durante la richiesta degli album più ascoltati:', error));
