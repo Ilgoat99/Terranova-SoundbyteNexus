@@ -25,23 +25,16 @@
           <i class='bx bx-library bx-md' style='color:#ffffff'  ></i>
           <p>La tua libreria</p>
         </div> 
-          
           <div class="playlist">
-            <div class="images">
               <div class="tuaplaylist">
                 <i class='bx bxs-heart  bx-md' style='color:#ffffff'  ></i>
                 <p>Canzoni preferite</p>
-                </div>
-        
-        
-            </div>
-            
-        </div>
-          
+              </div>
+          </div>
+          <div class="album">
             <h2>Album più ascoltati</h2>
-            <div id="top-albums">
-            
-
+          <div id="top-albums">
+          </div>
           </div>
         </div>
         </div>
@@ -55,32 +48,40 @@
         </div>
         <span id="login-container">
         <button class="user" id="loginButton" onclick="authorizeSpotify()"><i class='bx bx-user-circle  bx-md' style='color:#ffffff'></i></button>
-        <img id="profileImage" style="display: none;" />
       </span>
+      <div id="user-info">
+        <div id="profile-image"></div>
+      </div>
       </div>
       <section class="prova">
         <div id="player-container" style="display: none;">
-          <div id="user-info">
-           
-            <div id="profile-image"></div>
+          
+          
+          <div id="search-container">
+            <input type="text" id="search-input" placeholder="Cerca brani...">
+            <button id="search-button" >Cerca</button>
           </div>
-          
-          
       
           <h2>Anteprima Brani</h2>
           <div id="preview-track">
             <!-- Qui verrà visualizzata l'anteprima del brano -->
           </div>
-          
+          <div id="preview-controls">
+            <button onclick="changeTrack(-1)">Precedente</button>
+            <button onclick="changeTrack(1)">Successivo</button>
+          </div>
       
           <h2>Brani più ascoltati</h2>
           <ul id="top-tracks">
             <!-- Qui verranno visualizzati i brani più ascoltati -->
           </ul>
       
-        
-      
           
+      
+          <h2>Tracce dell'Album</h2>
+          <ul id="album-tracks">
+            <!-- Qui verranno visualizzate le tracce dell'album selezionato -->
+          </ul>
       
           <button onclick="logout()">Esci da Spotify</button>
         </div>

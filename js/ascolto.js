@@ -1,5 +1,5 @@
 const CLIENT_ID = 'bcef94d787dc4b9a96d6a84aa5ee8202';
-const REDIRECT_URI = 'http://localhost/Terranova-SoundbyteNexus/terranova.html';
+const REDIRECT_URI = 'http://localhost/yurii/Terranova-SoundbyteNexus/terranova.html';
 const SCOPES = ['user-read-private', 'user-read-email', 'user-top-read'];
 let accessToken;
 let currentPreviewIndex = 0;
@@ -46,7 +46,7 @@ function getUserInfo() {
   })
   .then(response => response.json())
   .then(data => {
-    document.getElementById('user-info').innerHTML += `<h3>Benvenuto, ${data.display_name}!</h3>`;
+    
     if (data.images.length > 0) {
       const profileImage = document.getElementById('profile-image');
       profileImage.innerHTML = `<img src="${data.images[0].url}" alt="Profile Image">`;
@@ -108,8 +108,17 @@ function getTopAlbums() {
     topAlbumsList.innerHTML = '';
     data.items.forEach(album => {
       const listItem = document.createElement('div');
+       listItem.classList.add('album-container');
+
+    const imageContainer = document.createElement('div');
+    imageContainer.classList.add('image-container');
+
+    const albumImage = document.createElement('img');
+    albumImage.src = album.images[0].url;
+    
+
 listItem.innerHTML = `
-  <div class="album-container">
+  
     <div class="image-container">
       
       <img src="${album.images[0].url}"  width="50">
