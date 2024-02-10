@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap');
+
+
 :root {
   --primary-color:#1d1d1d;
   --secondary-color:#1f1f1f;
@@ -21,7 +24,7 @@ body {
   margin: 0;
   padding: 0;
   display: flex;
-  font-family: "Baloo-Regular", Helvetica;
+  font-family: 'Lexend Deca', sans-serif;
   justify-content: start;
   flex-direction: column;
 }
@@ -155,6 +158,7 @@ main {
 img{border-radius: 50%;}
 
 .icon,
+.home,
 .playlist .images div,
 .tuaplaylist {
   display: flex;
@@ -201,7 +205,7 @@ height: 800px;
 
 }
 
-.ricerca {
+.ricerca,.title {
   color: white;
   display: flex;
   flex-direction: row;
@@ -209,7 +213,8 @@ height: 800px;
   align-items: center;
   
   width: 100%;
-  max-width: 1300px;
+  max-width: 1400px;
+  margin-top: 20px;
  
   
 }
@@ -254,30 +259,12 @@ height: 800px;
 
 .quiz {
   width: 100%;
-  max-width: 1300px;
+  max-width: 1400px;
   margin-top: 20px;
-}
-
-.title,
-.sopra,
-.ricerca {
-  width: 97%;
-  max-width: 1300px;
   
-  padding: 10px;
-
-
 }
 
-.title {
-  color: white;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
 
- 
-}
 
 .sopra {
   height: 370px;
@@ -286,7 +273,9 @@ height: 800px;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-
+  border: 1px solid white;
+  width: 100%;
+  max-width: 1400px;
 }
 
 .user {
@@ -300,18 +289,37 @@ height: 800px;
   align-items: center;
   transition: background-color 0.7s;
 }
+.logout {
+  background-color: transparent;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.7s;
+}
+
 
 .user:hover {
   background-color: var(--sixth-color);
+}
+.logout:hover {
+  background-color: var(--sixth-color);
+}
+#user-info{
+  display: none;
 }
 
 .bottoneplaylist {
   width: 50px;
   height: 50px;
   border-radius: 25%;
-  background-color: var(--fifth-color);
+  background:transparent;
   color: black;
   border: none;
+  transition: background-color 0.7s;
 }
 
 
@@ -319,14 +327,107 @@ height: 800px;
 .bottoneplaylist:hover {
   background-color: var(--sixth-color);
 }
+#playlists {
+  display: none;
+  margin-top: 20px;
+  background-color: #2E2E2E;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+#playlist-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.playlist-item {
+  margin: 20px;
+  text-align: center;
+}
+.playlist-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.playlist-name {
+  margin-top: 10px;
+  font-weight: bold;
+}
+.view-button {
+  cursor: pointer;
+  background-color: #1DB954;
+  color: #fff;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+.view-button:hover {
+  background-color: #4CAF50;
+}
+#search-container {
+  margin-top: 20px;
+}
+#search-input {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #2E2E2E;
+  color: #fff;
+}
+#search-results {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  justify-content: center;
+}
+.track-item {
+  margin: 20px;
+  width: 200px;
+  text-align: center;
+}
+.track-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.track-name {
+  margin-top: 10px;
+  font-weight: bold;
+}
+.play-button {
+  cursor: pointer;
+  background-color: #1DB954;
+  color: #fff;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+.play-button:hover {
+  background-color: #4CAF50;
+}
+#spotify-player {
+  margin-top: 20px;
+  border: none;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
 
 @media screen and (max-width: 1024px) {
   .nav,
   .main,
   .ricerca,
+  .title,
   .quiz {
     width: 95%;
-    max-width: 100%;
+    max-width: 95%;
   }
 
   .sidebar {
@@ -336,3 +437,15 @@ height: 800px;
   }
 }
 
+@media screen and (max-width: 1440px) {
+  .nav,
+  .main,
+  .ricerca,
+  .title,
+  .quiz {
+    width: 95%;
+    max-width: 95%;
+  }
+
+
+}

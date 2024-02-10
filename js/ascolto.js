@@ -1,6 +1,7 @@
 const CLIENT_ID = 'bcef94d787dc4b9a96d6a84aa5ee8202';
 const REDIRECT_URI = 'http://localhost/yurii/Terranova-SoundbyteNexus/terranova.html';
-const SCOPES = ['user-read-private', 'user-read-email', 'user-top-read'];
+const SCOPES = ['playlist-read-private', 'playlist-read-collaborative', 'user-library-read', 'user-read-private', 'user-read-email', 'user-top-read'];
+
 let accessToken;
 let currentPreviewIndex = 0;
 let currentAlbumId;
@@ -28,11 +29,11 @@ function handleAuthResponse() {
   if (params.access_token) {
     accessToken = params.access_token;
     document.getElementById('login-container').style.display = 'none';
-    document.getElementById('player-container').style.display = 'block';
     getUserInfo();
     getPreviewTrack();
     getTopTracks();
     getTopAlbums();
+    fetchPlaylists();
   }
 }
 
@@ -46,7 +47,6 @@ function getUserInfo() {
   })
   .then(response => response.json())
   .then(data => {
-    
     if (data.images.length > 0) {
       const profileImage = document.getElementById('profile-image');
       profileImage.innerHTML = `<img src="${data.images[0].url}" alt="Profile Image">`;
@@ -108,28 +108,20 @@ function getTopAlbums() {
     topAlbumsList.innerHTML = '';
     data.items.forEach(album => {
       const listItem = document.createElement('div');
-       listItem.classList.add('album-container');
-
-    const imageContainer = document.createElement('div');
-    imageContainer.classList.add('image-container');
-
-    const albumImage = document.createElement('img');
-    albumImage.src = album.images[0].url;
-    
-
-listItem.innerHTML = `
-  
-    <div class="image-container">
-      
-      <img src="${album.images[0].url}"  width="50">
-      <div class="name-container">
-      ${album.name}
-    </div>
-    </div>
-    
-  </div>`;
-topAlbumsList.appendChild(listItem);
-
+      listItem.classList.add('album-container');
+      const imageContainer = document.createElement('div');
+      imageContainer.classList.add('image-container');
+      const albumImage = document.createElement('img');
+      albumImage.src = album.images[0].url;
+      listItem.innerHTML = `
+        <div class="image-container">
+          <img src="${album.images[0].url}"  width="50">
+          <div class="name-container">
+            ${album.name}
+          </div>
+        </div>
+      </div>`;
+      topAlbumsList.appendChild(listItem);
     });
   })
   .catch(error => console.error('Errore durante la richiesta degli album più ascoltati:', error));
@@ -202,30 +194,88 @@ function searchTracks() {
   .catch(error => console.error('Errore durante la ricerca di brani:', error));
 }
 
+// Codice aggiunto dal secondo blocco di codice
+const playlistButton = document.getElementById('bottoneplaylist');
+const playlistSection = document.getElementById('section-playlist');
+const quizSection = document.getElementById('section-quiz');
+
+playlistButton.addEventListener('click', () => {
+  playlistButton.style.display = 'none';
+  playlistSection.style.display = 'block';
+  quizSection.style.display = 'none';
+});
+
+function fetchPlaylists() {
+  if (accessToken) {
+    fetch('https://api.spotify.com/v1/me/playlists', {
+      headers: {
+        'Authorization': `Bearer ${accessToken}`
+      }
+    })
+    .then(response => response.json())
+    .then(data => {
+      const playlistList = document.getElementById('playlist-list');
+      playlistList.innerHTML = '';
+
+      data.items.forEach(playlist => {
+        const listItem = createPlaylistItem(playlist);
+        playlistList.appendChild(listItem);
+      });
+
+      document.getElementById('playlists').style.display = 'block';
+    })
+    .catch(error => console.error('Error fetching playlists:', error));
+  }
+}
+
+function createPlaylistItem(playlist) {
+  const listItem = document.createElement('li');
+  listItem.className = 'playlist-item';
+
+  const playlistImage = createImage(playlist.images[0].url, playlist.name);
+  const playlistName = document.createElement('div');
+  playlistName.className = 'playlist-name';
+  playlistName.textContent = playlist.name;
+
+  const viewButton = createButton('View', () => viewPlaylist(playlist.id));
+
+  listItem.appendChild(playlistImage);
+  listItem.appendChild(playlistName);
+  listItem.appendChild(viewButton);
+
+  return listItem;
+}
+
+function viewPlaylist(playlistId) {
+  if (accessToken) {
+    window.open(`https://open.spotify.com/playlist/${playlistId}`, '_blank');
+  }
+}
+
+function createImage(src, alt) {
+  const image = document.createElement('img');
+  image.className = 'track-image';
+  image.src = src;
+  image.alt = alt;
+  return image;
+}
+
+function createButton(text, clickHandler) {
+  const button = document.createElement('button');
+  button.textContent = text;
+  button.className = 'play-button';
+  button.onclick = clickHandler;
+  return button;
+}
+
+function playTrack(uri) {
+  const iframe = document.getElementById('spotify-player');
+  if (iframe) {
+    const embedUrl = `https://open.spotify.com/embed/track/${uri.split(':')[2]}`;
+    iframe.src = embedUrl;
+  }
+}
+
+
+
 handleAuthResponse();
-const sunIcon = document.getElementById('sun');
-const moonIcon = document.getElementById('moon');
-
-sunIcon.addEventListener('click', () => {
-  if (!document.body.classList.contains('lightmode')) {
-    document.body.classList.add('lightmode');
-    sunIcon.style.display = 'none';
-    moonIcon.style.display = 'inline';
-  } else {
-    document.body.classList.remove('lightmode');
-    sunIcon.style.display = 'inline';
-    moonIcon.style.display = 'none';
-  }
-});
-
-moonIcon.addEventListener('click', () => {
-  if (document.body.classList.contains('lightmode')) {
-    document.body.classList.remove('lightmode');
-    sunIcon.style.display = 'inline';
-    moonIcon.style.display = 'none';
-  } else {
-    document.body.classList.add('lightmode');
-    sunIcon.style.display = 'none';
-    moonIcon.style.display = 'inline';
-  }
-});
