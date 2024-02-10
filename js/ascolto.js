@@ -203,3 +203,29 @@ function searchTracks() {
 }
 
 handleAuthResponse();
+const sunIcon = document.getElementById('sun');
+const moonIcon = document.getElementById('moon');
+
+sunIcon.addEventListener('click', () => {
+  if (!document.body.classList.contains('lightmode')) {
+    document.body.classList.add('lightmode');
+    sunIcon.style.display = 'none';
+    moonIcon.style.display = 'inline';
+  } else {
+    document.body.classList.remove('lightmode');
+    sunIcon.style.display = 'inline';
+    moonIcon.style.display = 'none';
+  }
+});
+
+moonIcon.addEventListener('click', () => {
+  if (document.body.classList.contains('lightmode')) {
+    document.body.classList.remove('lightmode');
+    sunIcon.style.display = 'inline';
+    moonIcon.style.display = 'none';
+  } else {
+    document.body.classList.add('lightmode');
+    sunIcon.style.display = 'none';
+    moonIcon.style.display = 'inline';
+  }
+});

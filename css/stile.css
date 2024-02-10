@@ -5,20 +5,19 @@
   --fourth-color:#1e1e1e;
   --fifth-color:#12202a;
   --sixth-color:#0a141b;
-
-
-
-  --primary-color2:#2a4864;
-  --secondary-color2:;
-  --third-color2:;
-  --fourth-color2:;
-  --fifth-color2:;
-  --sixth-color2:;
-
+  --seventh-color:#2e4152;
+}
+.lightmode{
+  --primary-color:#2a4864;
+  --secondary-color:#245172;
+  --third-color:#4e6e87;
+  --fourth-color:#29435a;
+  --fifth-color:#183b53;
+  
 
 }
 body {
-  background-color: #1d1d1d;
+  background-color:var(--primary-color);
   margin: 0;
   padding: 0;
   display: flex;
@@ -109,9 +108,10 @@ main {
 }
 
 .sidebar {
-  background-color: #1f1f1f;
+  background-color: var(--secondary-color);
   height: 755px;
   width: 300px;
+  display: flex;
   flex-direction: column;
   justify-content: space-between;
   overflow: hidden;
@@ -127,7 +127,7 @@ main {
   height: fit-content;
 }
 .libreria{
-  background-color: #1f1f1f;
+  background-color: var(--secondary-color);
   display: flex;
   flex-direction: column;
   justify-content: start;
@@ -141,7 +141,7 @@ main {
 .icon,
 .playlist,
 .tuaplaylist{
-  background-color: #1f1f1f;
+  background-color: var(--secondary-color);
   display: flex;
   flex-direction: row;
   justify-content: start;
@@ -191,7 +191,7 @@ margin-bottom: 13px;
   width: 100%;
   margin: 0 auto;
   
-  background: linear-gradient(#1a2d3b, #1e1e1e);
+  background: linear-gradient(var(--third-color), var(--fourth-color));
   border-radius: 20px;
   display: flex;
   flex-direction: column;
@@ -220,11 +220,11 @@ height: 800px;
   width: 700px;
  
   
-  background-color: #12202a;
+  background-color: var(--fifth-color);
   border-radius: 13px;
   align-content: flex-start;
   align-items: center;
-  border: #12202a 1px solid;
+  border: var(--fifth-color) 1px solid;
 }
 
 .barra button {
@@ -249,7 +249,7 @@ height: 800px;
 }
 
 .barra button:hover {
-  background-color: #0a141b;
+  background-color: var(--sixth-color);
 }
 
 .quiz {
@@ -302,20 +302,22 @@ height: 800px;
 }
 
 .user:hover {
-  background-color: #0a141b;
+  background-color: var(--sixth-color);
 }
 
 .bottoneplaylist {
   width: 50px;
   height: 50px;
   border-radius: 25%;
-  background-color: #12202a;
+  background-color: var(--fifth-color);
   color: black;
   border: none;
 }
 
+
+
 .bottoneplaylist:hover {
-  background-color: #0a141b;
+  background-color: var(--sixth-color);
 }
 
 @media screen and (max-width: 1024px) {
@@ -329,7 +331,7 @@ height: 800px;
 
   .sidebar {
     width: 40px;
-    justify-content: center;
+    
     overflow: hidden;
   }
 }

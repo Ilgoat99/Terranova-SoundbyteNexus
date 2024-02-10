@@ -14,29 +14,32 @@
       <i id="sun" class='bx bxs-sun bx-sm' style='color:#ffffff'  ></i>
       <i id="moon" class='bx bxs-moon bx-sm' style='color:#ffffff' ></i>
     </nav>
-    <main><div class="sidebar">
-      <div class="menu">
-        <div class="home">
-          <i class='bx bxs-home bx-md' style='color:#ffffff; ' ></i>
-          <p>Home</p>
+    <main>
+      <div class="sidebar">
+        <div class="menu">
+          <div class="home">
+            <i class='bx bxs-home bx-md' style='color:#ffffff; ' ></i>
+            <p>Home</p>
+          </div>
+          <div class="libreria">
+            <div class="icon">
+            <i class='bx bx-library bx-md' style='color:#ffffff'  ></i>
+            <p>La tua libreria</p>
+          </div> 
+            <div class="playlist">
+                <div class="tuaplaylist">
+                  <i class='bx bxs-heart  bx-md' style='color:#ffffff'  ></i>
+                  <p>Canzoni preferite</p>
+                </div>
+            </div>
+            <div class="album">
+            <div id="top-albums">
+            </div>
+            </div>
+          </div>
         </div>
-        <div class="libreria">
-          <div class="icon">
-          <i class='bx bx-library bx-md' style='color:#ffffff'  ></i>
-          <p>La tua libreria</p>
-        </div> 
-          <div class="playlist">
-              <div class="tuaplaylist">
-                <i class='bx bxs-heart  bx-md' style='color:#ffffff'  ></i>
-                <p>Canzoni preferite</p>
-              </div>
-          </div>
-          <div class="album">
-            <h2>Album più ascoltati</h2>
-          <div id="top-albums">
-          </div>
-          </div>
-        </div>
+        <div class="buttonelogout">
+          <i onclick="logout()" class='bx bx-log-out bx-md' style='color:#ffffff'  ></i>
         </div>
       </div>
     </div>
@@ -83,7 +86,7 @@
             <!-- Qui verranno visualizzate le tracce dell'album selezionato -->
           </ul>
       
-          <button onclick="logout()">Esci da Spotify</button>
+          
         </div>
       </section>
       <section class="quiz">
