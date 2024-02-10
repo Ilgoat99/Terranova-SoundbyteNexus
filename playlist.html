@@ -169,6 +169,12 @@
     <ul id="search-results"></ul>
   </div>
 
+  <div id="playlists">
+    <h2>Your Playlists:</h2>
+    <button class="view-button" onclick="showPlaylists()">View Playlists</button>
+    <ul id="playlist-list"></ul>
+  </div>
+
   <!-- Spotify Player iframe -->
   <iframe id="spotify-player" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
 
@@ -185,6 +191,17 @@
       localStorage.removeItem('access_token');
       window.location.href = redirectUri;
     }
+
+    function showPlaylists() {
+  const playlistsContainer = document.getElementById('playlist-list');
+  playlistsContainer.innerHTML = '';
+
+  // Chiamare la funzione fetchPlaylists per ottenere e visualizzare le playlist
+  fetchPlaylists();
+  
+  // Mostra l'elemento #playlists
+  document.getElementById('playlists').style.display = 'block';
+}
 
     function fetchPlaylists() {
       const accessToken = localStorage.getItem('access_token');

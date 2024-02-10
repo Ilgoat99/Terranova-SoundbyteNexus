@@ -94,6 +94,29 @@
     <button type="submit">Cerca</button>
   </form>
 
+    <div id="header">
+    <h1>Spotify Playlist Viewer</h1>
+    <div id="user-info">
+      <div id="user-name"></div>
+      <img id="user-image" src="" alt="User Image">
+    </div>
+    <a id="view-playlists" href="#" onclick="viewPlaylists()">View Playlists</a> <!-- Aggiunto il link per visualizzare le playlist -->
+  </div>
+
+  <a id="login" href="#" onclick="authorizeSpotify()">Login with Spotify</a>
+  <a id="logout" href="#" onclick="logout()">Logout</a>
+
+  <div id="playlists">
+    <h2>Your Playlists:</h2>
+    <ul id="playlist-list"></ul>
+  </div>
+
+  <div id="search-container">
+    <input type="text" id="search-input" placeholder="Search for tracks">
+    <button onclick="searchTracks()">Search</button>
+    <ul id="search-results"></ul>
+  </div>
+
   <!-- Risultati della ricerca -->
   <div id="searchResults"></div>
 
