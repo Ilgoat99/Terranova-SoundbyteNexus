@@ -4,7 +4,9 @@
     <meta charset="utf-8" />
     
     <link rel="stylesheet" href="css/stile.css" />
+    
     <script defer src="js/ascolto.js"></script>
+
     
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   </head>
@@ -33,6 +35,8 @@
                 </div>
             </div>
             <div class="album">
+              <h2>Top</h2>
+              
             <div id="top-albums">
             </div>
             </div>
@@ -45,10 +49,11 @@
       </div>
     </div>
     <div class="main">
+      
       <div class="ricerca">
-        <div class="barra">
-          <button id="search-button" class="search-button" ><i class='bx bx-search bx-sm' style='color:#ffffff'  ></i></button>
-          <input id="searchInput" type="text" class="ric" placeholder="Cerca...">
+        <div  class="barra">
+          <button id="search-button" class="search-button" onclick="searchTracks()" ><i class='bx bx-search bx-sm' style='color:#ffffff'  ></i></button>
+          <input id="search-input" type="text" class="ric" placeholder="Cerca...">
         </div>
         <span id="login-container">
         <button class="user" id="loginButton" onclick="authorizeSpotify()"><i class='bx bx-user-circle  bx-md' style='color:#ffffff'></i></button>
@@ -58,34 +63,47 @@
       </div>
       </div>
       <div class="title">
-          <h1>Quiz</h1>
+          <h1 id="title-quiz">Quiz</h1>
+          <h1 id="title-playlist" class="title-playlist">Playlist</h1>
           <button id="bottoneplaylist" class="bottoneplaylist"><i class='bx bxs-playlist bx-md' style='color:#ffffff'  ></i></button>
+          <button id="bottonequiz" class="bottonequiz"><i class='bx bx-arrow-back bx-md' style='color:#ffffff' ></i></i></button>
+        </div>
+        <div id="search-container" class="search-container">
+          <button id="top-right-button" onclick="hideDiv()"><i class='bx bx-x bx-md' style='color:#ffffff'  ></i></button>
+          
+          <div id="search-results"></div>
         </div>
       <section id="section-quiz" class="quiz">
         <div class="sopra">    
+          
+          
+            
+            
+        
+         
         </div>
         <div class="sotto">
         </div>
       </section>
       <section id="section-playlist" class="section-playlist" style="display: none;">
-        <div class="sopra">    
-          <div id="playlists">
-            <h2>Your Playlists:</h2>
-            <ul id="playlist-list"></ul>
-          </div>
-        
-          <div id="search-container">
-            <input type="text" id="search-input" placeholder="Search for tracks">
-            <button onclick="searchTracks()">Search</button>
-            <ul id="search-results"></ul>
-          </div>
-        
-          <!-- Spotify Player iframe -->
-          <iframe id="spotify-player" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+        <div id="playlists">
+          <h2>Your Playlists:</h2>
+          <div id="playlist-list"></div>
         </div>
-        <div class="sotto">
-        </div>
+      
+        
+      
+        
+        
       </section>
+      
+      
+      <audio id="audio-player" controls>
+        <source src="audio.mp3" type="audio/mp3">
+        Il tuo browser non supporta l'elemento audio.
+      </audio>
+    
+      
     </div>
   </main>
     
