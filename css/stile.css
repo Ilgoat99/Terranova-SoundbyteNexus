@@ -389,6 +389,90 @@ z-index: 1;
   border: none;
 
  }
+ .container {
+  display: none; /* Nascondi il riquadro del gioco all'avvio */
+  text-align: center;
+  margin-top: 50px;
+  max-width: 600px; /* Imposta una larghezza massima per il riquadro del gioco */
+  margin-left: auto; /* Centra il riquadro del gioco */
+  margin-right: auto; /* Centra il riquadro del gioco */
+}
+
+.quiz-container {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 50px;
+}
+
+.quiz {
+  text-align: center;
+  border: 1px solid #ccc;
+  padding: 20px;
+  width: 200px; /* Imposta una larghezza fissa per ogni riquadro del quiz */
+}
+
+.quiz h2 {
+  margin-top: 0;
+}
+
+/* Stile dei pulsanti */
+.btn {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+
+/* Stile per il riquadro del gioco */
+#question-container {
+  margin-top: 20px;
+}
+
+#result {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+#score {
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+#score-value {
+  font-size: 1.2em;
+}
+
+/* Stile per i pulsanti del gioco */
+#next-btn,
+#replay-btn {
+  display: none;
+  margin-top: 20px;
+}
+
+/* Stile per le risposte */
+.answer-btn {
+  display: block;
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #f0f0f0;
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.answer-btn:hover {
+  background-color: #e0e0e0;
+}
 
  audio{
   width: 70%;
