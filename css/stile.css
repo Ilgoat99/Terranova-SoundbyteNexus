@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap');
+
 
 
 :root {
@@ -10,6 +10,8 @@
   --sixth-color:#0a141b;
   --seventh-color:#2e4152;
   --eight-color:#394e5f;
+  --nineght-color:#14ab51;
+  --tenth-color:#225795;
 }
 .lightmode{
   --primary-color:#2a4864;
@@ -18,17 +20,27 @@
   --fourth-color:#29435a;
   --fifth-color:#183b53;
   --eight-color:#2d2e30;
+  --nineght-color:#004392;
+  --tenth-color:#14ab51;
   
-
 }
 body {
   background-color:var(--primary-color);
   margin: 0;
   padding: 0;
   display: flex;
-  font-family: 'Lexend Deca', sans-serif;
+  font-family: 'Lexend Deca';
   justify-content: start;
   flex-direction: column;
+  scroll-behavior: smooth;
+}
+.logo{
+  display: flex;
+  flex-direction: row;
+  color: #1ed75f;
+  align-items: center;
+  justify-content: baseline;
+  padding: auto;
 }
 
 .top-albums{
@@ -70,6 +82,7 @@ h2{
   border-radius: 50%;
   height: 50px;
   width: 50px;
+  border:3px solid var(--fifth-color);
   
 }
 
@@ -79,13 +92,15 @@ h2{
 
 
 .nav {
-  height: 50px;
-  width: 93%;
-  max-width: 100%;
+  height: 70px;
+  width: 100%;
+  max-width: 2600px;
   margin: auto;
   padding: 10px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+
   
 }
 
@@ -110,7 +125,7 @@ main {
 
 .sidebar {
   background-color: var(--secondary-color);
-  height: 755px;
+  height: 880px;
   width: 300px;
   display: flex;
   flex-direction: column;
@@ -191,17 +206,34 @@ margin-bottom: 13px;
 
 .main {
   width: 100%;
-  margin: 0 auto;
+  margin: 0 ;
+  padding: 10px;
   
   background: linear-gradient(var(--third-color), var(--fourth-color));
   border-radius: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   margin-left: 50px; /* Aggiunto margine a sinistra */
-height: 800px;
+height: 900px;
 z-index: 1;
 
+}
+.sopra{
+  width: 100%;
+  height: 600px;
+  padding: auto;
+  margin: 0;
+  
+}
+.sotto{
+  width: 100%;
+ height: 100px;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ 
 }
 
 .ricerca,.title {
@@ -214,6 +246,7 @@ z-index: 1;
   width: 100%;
   max-width: 1400px;
   margin-top: 20px;
+  margin: auto;
  
   
 }
@@ -256,33 +289,23 @@ z-index: 1;
   background-color: var(--sixth-color);
 }
 
-.quiz {
+
+.section-playlist,.section-quiz{
   width: 100%;
   max-width: 1400px;
   margin-top: 20px;
   position: relative;
+  margin: auto;
+ 
 }
-.section-playlist{
+.playlists{
   width: 100%;
-  max-width: 1400px;
-  margin-top: 20px;
-  position: relative;
+  padding: auto;
+  margin: auto;
 }
 
 
 
-.sopra {
-  height: 370px;
-  
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  
-  width: 100%;
-  max-width: 1400px;
-  position: relative;
-}
 
 .user {
   background-color: transparent;
@@ -393,33 +416,144 @@ z-index: 1;
   display: none; /* Nascondi il riquadro del gioco all'avvio */
   text-align: center;
   margin-top: 50px;
-  max-width: 600px; /* Imposta una larghezza massima per il riquadro del gioco */
+  max-width: 800px; /* Imposta una larghezza massima per il riquadro del gioco */
   margin-left: auto; /* Centra il riquadro del gioco */
   margin-right: auto; /* Centra il riquadro del gioco */
+  color: white;
+ 
+  height: 450px;
+  background-color: var(--nineght-color);
+  border-radius: 30px;
+  padding: 20px;
+ 
+  
 }
+
 
 .quiz-container {
+  width: 90%;
+  max-width: 1300px;
+  display:flex ;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+  margin: auto;
+  
+}
+#question-container{
+height: 30px;
+margin:20px;
+
+}
+#answers-container{
+  margin:30px;
+height: 100px;
+
+}
+#answers-container button{
+  height: 35px;
+  width: 360px;
+
+}
+#result{
+height: 30px;
+margin: 20px;
+
+}
+.container .levell{
+  
+  
   display: flex;
-  justify-content: space-around;
-  margin-top: 50px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
 }
 
+#score{
+height: 5px;
+margin:20px;
+}
 .quiz {
   text-align: center;
-  border: 1px solid #ccc;
-  padding: 20px;
-  width: 200px; /* Imposta una larghezza fissa per ogni riquadro del quiz */
+  
+  margin-top: 30px;
+   /* Imposta una larghezza fissa per ogni riquadro del quiz */
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+
+}
+.quizimg{
+  width: 100%;
+  height: 100%;
+  max-width: 300px;
+  max-height:300px ;
+  border-radius: 20px;
+  
 }
 
 .quiz h2 {
   margin-top: 0;
 }
-
+.img1,.img2,.img3{
+  width: 100%;
+  max-width:350px;
+  height: 100%;
+  max-height: 350px;
+  border-radius: 20px;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.img1{
+  background-color: #0365d8;
+}
+.img2{
+  background-color: #7535dd;
+}
+.img3{
+  background-color:#000000;
+}
+#close-btn {
+  position: absolute; /* Imposta la posizione assoluta per posizionare il pulsante di chiusura */
+  top: 10px; /* Distanza dal top */
+  right: 40px; /* Distanza dalla destra */
+  background: transparent;
+  
+  color: white; /* Colore del testo */
+  border: none; /* Rimuovi il bordo */
+  border-radius: 20%; /* Imposta il bordo arrotondato per creare una forma circolare */
+  width: 30px; /* Larghezza */
+  height: 30px; /* Altezza */
+  font-size: 18px; /* Dimensione del testo */
+  cursor: pointer; /* Cambia il cursore al passaggio */
+  display: flex; /* Imposta il display su flex per centrare il contenuto verticalmente */
+  justify-content: center; /* Centra il contenuto orizzontalmente */
+  align-items: center; /* Centra il contenuto verticalmente */
+}
+.button-quiz{
+  width: 100px;
+  height: 50px;
+  border-radius: 20px;
+  background-color: var(--seventh-color);
+  border: none;
+  color: white;
+}
+.button-quiz:hover {
+  background-color: var(--sixth-color);
+}
 /* Stile dei pulsanti */
 .btn {
   margin-top: 10px;
+  
   padding: 10px 20px;
-  background-color: #007bff;
+  background-color: var(--tenth-color);
   color: white;
   border: none;
   border-radius: 5px;
@@ -431,24 +565,8 @@ z-index: 1;
   background-color: #0056b3;
 }
 
-/* Stile per il riquadro del gioco */
-#question-container {
-  margin-top: 20px;
-}
 
-#result {
-  font-weight: bold;
-  margin-top: 10px;
-}
 
-#score {
-  margin-top: 20px;
-  font-weight: bold;
-}
-
-#score-value {
-  font-size: 1.2em;
-}
 
 /* Stile per i pulsanti del gioco */
 #next-btn,
@@ -459,27 +577,52 @@ z-index: 1;
 
 /* Stile per le risposte */
 .answer-btn {
-  display: block;
-  margin-top: 10px;
-  padding: 10px 20px;
-  background-color: #f0f0f0;
-  color: #333;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  
+  border-radius: 10px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 .answer-btn:hover {
-  background-color: #e0e0e0;
+  background-color: var(--third-color);
+}
+#answers-container {
+ 
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Crea due colonne di larghezza uguale */
+  gap: 10px;
+}
+.gues{
+  margin: auto;
+  
+  width: 100%;
+ 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+.guesss{
+  width: 100px;
+  height: 50px;
+  background-color: var(--seventh-color);
+  border-radius: 30px;
+  border: none;
+  transition: background-color 0.3s ease; ;
+  color: white;
+}
+.guesss:hover{
+  background-color: var(--sixth-color);
 }
 
  audio{
   width: 70%;
   height:100%;
+  max-height: 100px;
   border: none;
   border-radius: 15px;
-  margin-bottom: 20px;
+  bottom: 20px;
  }
 audio::-webkit-media-controls-panel {
   background-color:var(--eight-color);
@@ -522,8 +665,8 @@ audio::-webkit-media-controls-volume-slider{
   height: 300px;
   display: grid;
   grid-template-columns: repeat(4, 1fr); /* Crea due colonne di larghezza uguale */
-  gap: 10px;
-  padding: 30px;
+ 
+  padding: auto;
   margin: auto;
 }
 .playlist-item{
@@ -535,6 +678,7 @@ audio::-webkit-media-controls-volume-slider{
   align-items: center;
   align-content: center;
   color: white;
+  margin: auto;
 }
 .playlist-item img{
   width: 100px;
@@ -561,6 +705,20 @@ audio::-webkit-media-controls-volume-slider{
   #playlists{
     width: auto;
   }
+  .img1,
+  .img2,
+  .img3
+  {
+    height: 200px;
+    width: 200px;
+  
+  }
+  .img1 img,
+  .img2 img,
+  .img3 img{
+    height: 190px;
+    height: 190px;
+  }
 }
 
 @media screen and (max-width: 1940px) {
@@ -570,6 +728,7 @@ audio::-webkit-media-controls-volume-slider{
   .title,
   .quiz,
   .section-playlist,
+  .quiz-container,
 
   
 
@@ -582,7 +741,8 @@ audio::-webkit-media-controls-volume-slider{
 }
 
 @media screen and (max-width: 1440px){
-  .search-container{
+  .search-container,
+  .quiz-container{
     width: 80%;
   }
   .sidebar {

@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
+    <link href='https://fonts.googleapis.com/css?family=Lexend Deca' rel='stylesheet'>
     
     <link rel="stylesheet" href="css/stile.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -13,7 +14,9 @@
   </head>
   <body>
     <nav class="nav">
-      <i class='bx bxl-spotify bx-sm' style='color:#1ed75f'>Spotiquiz</i>
+      <div class="logo"><i class='bx bxl-spotify bx-lg' style='color:#1ed75f'></i>
+      <h1>Spotiquiz</h1>
+      </div>
       <i id="sun" class='bx bxs-sun bx-sm' style='color:#ffffff'  ></i>
       <i id="moon" class='bx bxs-moon bx-sm' style='color:#ffffff' ></i>
     </nav>
@@ -50,7 +53,7 @@
       </div>
     </div>
     <div class="main">
-      
+    
       <div class="ricerca">
         <div  class="barra">
           <button id="search-button" class="search-button" onclick="searchTracks()" ><i class='bx bx-search bx-sm' style='color:#ffffff'  ></i></button>
@@ -63,51 +66,59 @@
         <div id="profile-image"></div>
       </div>
       </div>
+      <div id="search-container" class="search-container">
+        <button id="top-right-button" onclick="hideDiv()"><i class='bx bx-x bx-md' style='color:#ffffff'  ></i></button>
+        
+        <div id="search-results"></div>
+      </div>
+      <div class="sopra">
       <div class="title">
           <h1 id="title-quiz">Quiz</h1>
           <h1 id="title-playlist" class="title-playlist">Playlist</h1>
           <button id="bottoneplaylist" class="bottoneplaylist"><i class='bx bxs-playlist bx-md' style='color:#ffffff'  ></i></button>
           <button id="bottonequiz" class="bottonequiz"><i class='bx bx-arrow-back bx-md' style='color:#ffffff' ></i></i></button>
         </div>
-        <div id="search-container" class="search-container">
-          <button id="top-right-button" onclick="hideDiv()"><i class='bx bx-x bx-md' style='color:#ffffff'  ></i></button>
-          
-          <div id="search-results"></div>
-        </div>
+      
       <section id="section-quiz" class="section-quiz">
            
           
         <div class="quiz-container">
           <!-- Primo quiz -->
           <div class="quiz" id="quiz1">
-              <h2>Quiz 1</h2>
-              <button id="easy-quiz-btn">Start Easy Quiz</button>
+            <div class="img1"><img class="quizimg" src="img/easy.png" alt="" srcset=""></div>
+              
+              <button class="button-quiz" id="easy-quiz-btn">Play</button>
           </div>
           
           <!-- Secondo quiz -->
           <div class="quiz" id="quiz2">
-              <h2>Quiz 2</h2>
-              <button id="medium-quiz-btn">Start Medium Quiz</button>
+              <div class="img2"><img class="quizimg" src="img/medium.png" alt="" srcset=""></div>
+              <button  class="button-quiz" id="medium-quiz-btn">Play</button>
           </div>
           
           <!-- Terzo quiz -->
           <div class="quiz" id="quiz3">
-              <h2>Quiz 3</h2>
-              <button id="hard-quiz-btn">Start Hard Quiz</button>
+              <div class="img3"><img class="quizimg" src="img/hard.png" alt="" srcset=""></div>
+              <button  class="button-quiz" id="hard-quiz-btn">Play</button>
           </div>
       </div>
   
       <!-- Container per il quiz principale -->
       <div class="container">
-          <h1>Quiz Game</h1>
+        <div class="levell">
+          <h1>Level:</h1>
+          <h2></h2>
+        </div>
+          
           <div id="question-container"></div>
           <div id="answers-container"></div>
           <div id="result"></div>
           <div id="score">Score: <span id="score-value">0</span></div>
           <button id="next-btn" class="btn">Next Question</button>
           <button id="replay-btn" class="btn">Replay</button>
-          <button id="close-btn" class="btn">Close</button>
+          <button id="close-btn" class="close-btn" ><i class='bx bx-x bx-md' style='color:#ffffff'  ></i></button>
       </div>
+     
       </section>
             
         
@@ -121,15 +132,23 @@
         </div>
 
       </section>
-      
-      
-      <audio id="audio-player" controls>
-        <source src="audio.mp3" type="audio/mp3">
+    </div>
+    <div class="gues">
+      <h1>Scopri la novita'</h1>
+      <button class="guesss">Guess the song</button>
+    </div>
+      <div class="sotto">
+
+        <audio id="audio-player" controls>
+        <source src="" type="audio/mp3">
         Il tuo browser non supporta l'elemento audio.
       </audio>
-    
-      
+      </div>
     </div>
+      
+      
+    
+    
   </main>
     
     

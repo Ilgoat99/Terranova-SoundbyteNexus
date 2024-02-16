@@ -28,6 +28,18 @@ let currentQuestionIndex = 0;
 let questions = [];
 let score = 0;
 
+const quizTitles = {
+  'quiz1': 'Easy',
+  'quiz2': 'Medium ',
+  'quiz3': 'Hard'
+};
+
+const quizColors = {
+  'quiz1': '#0365d8', 
+  'quiz2': '#7535dd', 
+  'quiz3': '#000000'  
+};
+
 function fetchQuestions(quizId) {
     let difficulty;
     switch (quizId) {
@@ -44,6 +56,11 @@ function fetchQuestions(quizId) {
             console.error('Invalid quiz ID');
             return;
     }
+    
+    // Setta il titolo del quiz e il colore
+    const titleElement = document.querySelector('.container h2');
+    titleElement.textContent = quizTitles[quizId];
+    titleElement.style.color = quizColors[quizId];
 
     fetch(`https://opentdb.com/api.php?amount=10&category=12&difficulty=${difficulty}`)
         .then(response => response.json())
@@ -109,7 +126,7 @@ function checkAnswer(selectedAnswer,userName,userEmail) {
     }
 
     const postData = {
-        questionId: currentQuestionIndex + 1,
+        
         selectedAnswer: selectedAnswer,
         questionText: questions[currentQuestionIndex].question,
         userName: globalUserName,
@@ -171,7 +188,7 @@ replayButton.addEventListener('click', () => {
 closeButton.addEventListener('click', () => {
     gameContainer.style.display = 'none';
     document.querySelectorAll('.quiz').forEach(quiz => {
-        quiz.style.display = 'block';
+        quiz.style.display = 'flex';
     });
 });
 function endGame() {

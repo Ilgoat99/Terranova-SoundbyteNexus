@@ -1,77 +1,69 @@
 <?php
 // Connessione al database
 $servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "prova";
+$username = "root"; // Inserisci il tuo username del database
+$password = ""; // Inserisci la tua password del database
+$dbname = "prova5"; // Inserisci il nome del tuo database
 
-// Creazione della connessione
+// Crea la connessione
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Verifica della connessione
+// Verifica la connessione
 if ($conn->connect_error) {
-    die("Connessione al database fallita: " . $conn->connect_error);
+    die("Connessione fallita: " . $conn->connect_error);
 }
 
-// Ricezione dei dati inviati tramite POST
-$inputJSON = file_get_contents('php://input');
-$input = json_decode($inputJSON, true);
+// Ottieni i dati POST inviati dal client
+$data = json_decode(file_get_contents('php://input'), true);
 
-// Controllo se i dati sono stati ricevuti correttamente
-if (!empty($input)) {
-    $questionId = $input['questionId'];
-    $selectedAnswer = $input['selectedAnswer'];
-    $questionText = $input['questionText'];
-    $userName = $input['userName'];
-    $userEmail = $input['userEmail'];
+// Estrai i dati
+$selectedAnswer = $data['selectedAnswer'];
+$questionText = $data['questionText'];
+$userName = $data['userName'];
+$userEmail = $data['userEmail'];
 
-    // Controllo se sia il nome utente che l'email sono definiti
-    if ($userName && $userEmail) {
-        // Controllo se l'utente esiste già nel database
-        $sqlCheckUser = "SELECT id_utente FROM utente WHERE mail = ?";
-        $stmtCheckUser = $conn->prepare($sqlCheckUser);
-        $stmtCheckUser->bind_param("s", $userEmail);
-        $stmtCheckUser->execute();
-        $resultCheckUser = $stmtCheckUser->get_result();
+// Verifica che il nome e l'email non siano vuoti
+if (!empty($userName) && !empty($userEmail)) {
+    // Prepara e esegui l'inserimento dei dati nella tabella utente se non esiste già
+    $stmt_user = $conn->prepare("INSERT IGNORE INTO utente (nome, mail) VALUES (?, ?)");
+    $stmt_user->bind_param("ss", $userName, $userEmail);
+    $stmt_user->execute();
 
-        if ($resultCheckUser->num_rows > 0) {
-            // L'utente è già presente nel database
-            $row = $resultCheckUser->fetch_assoc();
-            $userId = $row['id_utente'];
-        } else {
-            // L'utente non è presente nel database, quindi lo inseriamo
-            $sqlInsertUser = "INSERT INTO utente (nome, mail) VALUES (?, ?)";
-            $stmtInsertUser = $conn->prepare($sqlInsertUser);
-            $stmtInsertUser->bind_param("ss", $userName, $userEmail);
+    // Prepara e esegui l'inserimento dei dati nella tabella domanda se non esiste già
+    $stmt_domanda = $conn->prepare("INSERT IGNORE INTO domanda (testo_domanda) VALUES (?)");
+    $stmt_domanda->bind_param("s", $questionText);
+    $stmt_domanda->execute();
 
-            if ($stmtInsertUser->execute()) {
-                $userId = $stmtInsertUser->insert_id;
-            } else {
-                echo "Errore durante il salvataggio dell'utente nel database: " . $stmtInsertUser->error;
-            }
+    // Prepara e esegui l'inserimento dei dati nella tabella risposta
+    $stmt_risposta = $conn->prepare("INSERT INTO risposta (testo_risposta, mail_utente, id_domanda) VALUES (?, ?, ?)");
 
-            $stmtInsertUser->close();
-        }
+    // Ottieni l'ID della domanda associata al testo della domanda
+    $stmt_get_domanda_id = $conn->prepare("SELECT id_domanda FROM domanda WHERE testo_domanda = ?");
+    $stmt_get_domanda_id->bind_param("s", $questionText);
+    $stmt_get_domanda_id->execute();
+    $stmt_get_domanda_id->store_result();
+    $stmt_get_domanda_id->bind_result($domanda_id);
+    $stmt_get_domanda_id->fetch();
 
-        // Inserimento della risposta nel database
-        $sqlInsertAnswer = "INSERT INTO risposta (id_domanda, id_utente, testo_risposta) VALUES (?, ?, ?)";
-        $stmtInsertAnswer = $conn->prepare($sqlInsertAnswer);
-        $stmtInsertAnswer->bind_param("iis", $questionId, $userId, $selectedAnswer);
+    // Esegui l'inserimento dei dati nella tabella risposta
+    $stmt_risposta->bind_param("ssi", $selectedAnswer, $userEmail, $domanda_id);
+    $stmt_risposta->execute();
 
-        if ($stmtInsertAnswer->execute()) {
-            echo "Risposta salvata con successo nel database!";
-        } else {
-            echo "Errore durante il salvataggio della risposta nel database: " . $stmtInsertAnswer->error;
-        }
-
-        $stmtInsertAnswer->close();
+    // Verifica se l'inserimento è stato eseguito con successo
+    if ($stmt_risposta->affected_rows > 0) {
+        echo "Dati inseriti correttamente nel database.";
     } else {
-        echo "Nome utente o email mancanti. I dati non sono stati salvati nel database.";
+        echo "Errore nell'inserimento dei dati nel database.";
     }
+
+    // Chiudi le connessioni e le istruzioni preparate
+    $stmt_user->close();
+    $stmt_domanda->close();
+    $stmt_risposta->close();
+    $stmt_get_domanda_id->close();
 } else {
-    echo "Nessun dato ricevuto dal frontend.";
+    echo "Il nome e l'email non possono essere vuoti.";
 }
 
-// Chiudi la connessione al database
 $conn->close();
 ?>
