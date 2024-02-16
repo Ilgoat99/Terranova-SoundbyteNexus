@@ -60,20 +60,35 @@ function fetchQuestions(quizId) {
         });
 }
 
-function showQuestion() {
-    const question = questions[currentQuestionIndex];
-    questionContainer.innerHTML = decodeEntities(question.question);
 
-    answersContainer.innerHTML = '';
-    question.answers.forEach(answer => {
-        const answerButton = document.createElement('button');
-        answerButton.classList.add('btn', 'answer-btn');
-        answerButton.textContent = decodeEntities(answer.text);
-        answerButton.addEventListener('click', () => {
-            checkAnswer(answer.text);
-        });
-        answersContainer.appendChild(answerButton);
-    });
+
+function showQuestion() {
+  const question = questions[currentQuestionIndex];
+  questionContainer.innerHTML = decodeEntities(question.question);
+
+  answersContainer.innerHTML = '';
+
+  // Mischia le risposte
+  const shuffledAnswers = shuffleArray(question.answers);
+
+  shuffledAnswers.forEach(answer => {
+      const answerButton = document.createElement('button');
+      answerButton.classList.add('btn', 'answer-btn');
+      answerButton.textContent = decodeEntities(answer.text);
+      answerButton.addEventListener('click', () => {
+          checkAnswer(answer.text);
+      });
+      answersContainer.appendChild(answerButton);
+  });
+}
+
+// Funzione per mischiare un array (utilizzando l'algoritmo di Fisher-Yates)
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
 }
 
 function decodeEntities(encodedString) {
@@ -82,7 +97,7 @@ function decodeEntities(encodedString) {
     return textarea.value;
 }
 
-function checkAnswer(selectedAnswer,globalUserName,globalUserEmail) {
+function checkAnswer(selectedAnswer,userName,userEmail) {
     const correctAnswer = questions[currentQuestionIndex].correct_answer;
 
     if (selectedAnswer === correctAnswer) {
@@ -146,13 +161,13 @@ nextButton.addEventListener('click', () => {
 });
 
 replayButton.addEventListener('click', () => {
-    currentQuestionIndex = 0;
-    score = 0;
-    scoreContainer.textContent = score;
-    resultContainer.textContent = '';
-    fetchQuestions();
+  currentQuestionIndex = 0;
+  score = 0;
+  scoreContainer.textContent = score;
+  resultContainer.textContent = '';
+  const quizId = quizButtons[currentQuestionIndex].parentElement.id; // Ottieni l'ID del quiz attuale
+  fetchQuestions(quizId); // Passa l'ID del quiz alla funzione fetchQuestions
 });
-
 closeButton.addEventListener('click', () => {
     gameContainer.style.display = 'none';
     document.querySelectorAll('.quiz').forEach(quiz => {
