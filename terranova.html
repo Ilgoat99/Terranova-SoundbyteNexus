@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     
     <link rel="stylesheet" href="css/stile.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     
     <script defer src="js/ascolto.js"></script>
 
@@ -26,12 +27,12 @@
           <div class="libreria">
             <div class="icon">
             <i class='bx bx-library bx-md' style='color:#ffffff'  ></i>
-            <p>La tua libreria</p>
+            <p>Your Library</p>
           </div> 
             <div class="playlist">
                 <div class="tuaplaylist">
                   <i class='bx bxs-heart  bx-md' style='color:#ffffff'  ></i>
-                  <p>Canzoni preferite</p>
+                  <p>Favorite Songs</p>
                 </div>
             </div>
             <div class="album">
@@ -73,28 +74,52 @@
           
           <div id="search-results"></div>
         </div>
-      <section id="section-quiz" class="quiz">
-        <div class="sopra">    
+      <section id="section-quiz" class="section-quiz">
+           
           
+        <div class="quiz-container">
+          <!-- Primo quiz -->
+          <div class="quiz" id="quiz1">
+              <h2>Quiz 1</h2>
+              <button id="easy-quiz-btn">Start Easy Quiz</button>
+          </div>
           
-            
+          <!-- Secondo quiz -->
+          <div class="quiz" id="quiz2">
+              <h2>Quiz 2</h2>
+              <button id="medium-quiz-btn">Start Medium Quiz</button>
+          </div>
+          
+          <!-- Terzo quiz -->
+          <div class="quiz" id="quiz3">
+              <h2>Quiz 3</h2>
+              <button id="hard-quiz-btn">Start Hard Quiz</button>
+          </div>
+      </div>
+  
+      <!-- Container per il quiz principale -->
+      <div class="container">
+          <h1>Quiz Game</h1>
+          <div id="question-container"></div>
+          <div id="answers-container"></div>
+          <div id="result"></div>
+          <div id="score">Score: <span id="score-value">0</span></div>
+          <button id="next-btn" class="btn">Next Question</button>
+          <button id="replay-btn" class="btn">Replay</button>
+          <button id="close-btn" class="btn">Close</button>
+      </div>
+      </section>
             
         
-         
-        </div>
-        <div class="sotto">
-        </div>
-      </section>
+      
+        
+      
       <section id="section-playlist" class="section-playlist" style="display: none;">
         <div id="playlists">
           <h2>Your Playlists:</h2>
           <div id="playlist-list"></div>
         </div>
-      
-        
-      
-        
-        
+
       </section>
       
       
