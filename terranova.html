@@ -2,113 +2,153 @@
 <html>
   <head>
     <meta charset="utf-8" />
+    <link href='https://fonts.googleapis.com/css?family=Lexend Deca' rel='stylesheet'>
     
     <link rel="stylesheet" href="css/stile.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
     <script defer src="js/ascolto.js"></script>
+
     
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   </head>
   <body>
     <nav class="nav">
-      <i class='bx bxl-spotify bx-sm' style='color:#1ed75f'>Spotiquiz</i>
+      <div class="logo"><i class='bx bxl-spotify bx-lg' style='color:#1ed75f'></i>
+      <h1>Spotiquiz</h1>
+      </div>
       <i id="sun" class='bx bxs-sun bx-sm' style='color:#ffffff'  ></i>
       <i id="moon" class='bx bxs-moon bx-sm' style='color:#ffffff' ></i>
     </nav>
-    <main><div class="sidebar">
-      <div class="menu">
-        <div class="home">
-          <i class='bx bxs-home bx-md' style='color:#ffffff; ' ></i>
-          <p>Home</p>
-        </div>
-        <div class="libreria">
-          <div class="icon">
-          <i class='bx bx-library bx-md' style='color:#ffffff'  ></i>
-          <p>La tua libreria</p>
-        </div> 
-          
-          <div class="playlist">
-            <div class="images">
-              <div class="tuaplaylist">
-                <i class='bx bxs-heart  bx-md' style='color:#ffffff'  ></i>
-                <p>Canzoni preferite</p>
+    <main>
+      <div class="sidebar">
+        <div class="menu">
+          <div class="home">
+            <i class='bx bxs-home bx-md' style='color:#ffffff; ' ></i>
+            <p>Home</p>
+          </div>
+          <div class="libreria">
+            <div class="icon">
+            <i class='bx bx-library bx-md' style='color:#ffffff'  ></i>
+            <p>Your Library</p>
+          </div> 
+            <div class="playlist">
+                <div class="tuaplaylist">
+                  <i class='bx bxs-heart  bx-md' style='color:#ffffff'  ></i>
+                  <p>Favorite Songs</p>
                 </div>
-        
-        
             </div>
-            
-        </div>
-          
-            <h2>Album più ascoltati</h2>
+            <div class="album">
+              <h2>Top</h2>
+              
             <div id="top-albums">
-            
-
+            </div>
+            </div>
           </div>
         </div>
+       
+          <button class="logout"><i onclick="logout()" class='bx bx-log-out bx-md' style='color:#ffffff'  ></i></button>
         </div>
+        
       </div>
     </div>
     <div class="main">
+    
       <div class="ricerca">
-        <div class="barra">
-          <button id="search-button" class="search-button" ><i class='bx bx-search bx-sm' style='color:#ffffff'  ></i></button>
-          <input id="searchInput" type="text" class="ric" placeholder="Cerca...">
+        <div  class="barra">
+          <button id="search-button" class="search-button" onclick="searchTracks()" ><i class='bx bx-search bx-sm' style='color:#ffffff'  ></i></button>
+          <input id="search-input" type="text" class="ric" placeholder="Cerca...">
         </div>
         <span id="login-container">
         <button class="user" id="loginButton" onclick="authorizeSpotify()"><i class='bx bx-user-circle  bx-md' style='color:#ffffff'></i></button>
-        <img id="profileImage" style="display: none;" />
       </span>
+      <div id="user-info">
+        <div id="profile-image"></div>
       </div>
-      <section class="prova">
-        <div id="player-container" style="display: none;">
-          <div id="user-info">
+      </div>
+      <div id="search-container" class="search-container">
+        <button id="top-right-button" onclick="hideDiv()"><i class='bx bx-x bx-md' style='color:#ffffff'  ></i></button>
+        
+        <div id="search-results"></div>
+      </div>
+      <div class="sopra">
+      <div class="title">
+          <h1 id="title-quiz">Quiz</h1>
+          <h1 id="title-playlist" class="title-playlist">Playlist</h1>
+          <button id="bottoneplaylist" class="bottoneplaylist"><i class='bx bxs-playlist bx-md' style='color:#ffffff'  ></i></button>
+          <button id="bottonequiz" class="bottonequiz"><i class='bx bx-arrow-back bx-md' style='color:#ffffff' ></i></i></button>
+        </div>
+      
+      <section id="section-quiz" class="section-quiz">
            
-            <div id="profile-image"></div>
+          
+        <div class="quiz-container">
+          <!-- Primo quiz -->
+          <div class="quiz" id="quiz1">
+            <div class="img1"><img class="quizimg" src="img/easy.png" alt="" srcset=""></div>
+              
+              <button class="button-quiz" id="easy-quiz-btn">Play</button>
           </div>
           
-          
-      
-          <h2>Anteprima Brani</h2>
-          <div id="preview-track">
-            <!-- Qui verrà visualizzata l'anteprima del brano -->
+          <!-- Secondo quiz -->
+          <div class="quiz" id="quiz2">
+              <div class="img2"><img class="quizimg" src="img/medium.png" alt="" srcset=""></div>
+              <button  class="button-quiz" id="medium-quiz-btn">Play</button>
           </div>
           
-      
-          <h2>Brani più ascoltati</h2>
-          <ul id="top-tracks">
-            <!-- Qui verranno visualizzati i brani più ascoltati -->
-          </ul>
-      
-        
-      
-          
-      
-          <button onclick="logout()">Esci da Spotify</button>
+          <!-- Terzo quiz -->
+          <div class="quiz" id="quiz3">
+              <div class="img3"><img class="quizimg" src="img/hard.png" alt="" srcset=""></div>
+              <button  class="button-quiz" id="hard-quiz-btn">Play</button>
+          </div>
+      </div>
+  
+      <!-- Container per il quiz principale -->
+      <div class="container">
+        <div class="levell">
+          <h1>Level:</h1>
+          <h2></h2>
         </div>
+          
+          <div id="question-container"></div>
+          <div id="answers-container"></div>
+          <div id="result"></div>
+          <div id="score">Score: <span id="score-value">0</span></div>
+          <button id="next-btn" class="btn">Next Question</button>
+          <button id="replay-btn" class="btn">Replay</button>
+          <button id="close-btn" class="close-btn" ><i class='bx bx-x bx-md' style='color:#ffffff'  ></i></button>
+      </div>
+     
       </section>
-      <section class="quiz">
-        <div class="title">
-          <h1>Quiz</h1>
-          <button class="bottoneplaylist"><i class='bx bxs-playlist bx-md' style='color:#ffffff'  ></i></button>
-        </div>
-        <div class="sopra">
-          
-       
-       
-          
             
-          </div>
         
-
-         
-          
       
-
-        <div class="sotto">
-          
-
+        
+      
+      <section id="section-playlist" class="section-playlist" style="display: none;">
+        <div id="playlists">
+          <h2>Your Playlists:</h2>
+          <div id="playlist-list"></div>
         </div>
+
       </section>
     </div>
+    <div class="gues">
+      <h1>Scopri la novita'</h1>
+      <button class="guesss">Guess the song</button>
+    </div>
+      <div class="sotto">
+
+        <audio id="audio-player" controls>
+        <source src="" type="audio/mp3">
+        Il tuo browser non supporta l'elemento audio.
+      </audio>
+      </div>
+    </div>
+      
+      
+    
+    
   </main>
     
     
