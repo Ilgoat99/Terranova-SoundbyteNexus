@@ -125,16 +125,19 @@ main {
 
 .sidebar {
   background-color: var(--secondary-color);
-  height: 880px;
+  height: 920px;
   width: 300px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   overflow: hidden;
-  padding: 20px;
+  padding: auto;
   border-radius: 13px;
 }
+.album{
 
+  padding: 0;
+}
 .menu,
 .home,
 .libreria,
@@ -201,6 +204,11 @@ p {
 height: 47px;
 width: 300px;
 margin-bottom: 13px;
+}
+
+.home,.libreria,.playlist{
+  padding: 5px;
+ 
 }
 
 
@@ -327,16 +335,14 @@ z-index: 1;
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color 0.7s;
+ 
 }
 
 
 .user:hover {
   background-color: var(--sixth-color);
 }
-.logout:hover {
-  background-color: var(--sixth-color);
-}
+
 #user-info{
   display: none;
 }
@@ -698,7 +704,7 @@ audio::-webkit-media-controls-volume-slider{
   }
 
   .sidebar {
-    width: 40px;
+    width: 60px;
     
     overflow: hidden;
   }
@@ -736,6 +742,9 @@ audio::-webkit-media-controls-volume-slider{
     width: 95%;
     max-width: 95%;
   }
+  .sidebar{
+    padding: 20px;
+  }
 
 
 }
@@ -746,8 +755,8 @@ audio::-webkit-media-controls-volume-slider{
     width: 80%;
   }
   .sidebar {
-    width: 35px;
-    
+    width: 50px;
+    padding: 3px;
     overflow: hidden;
   }
 }
