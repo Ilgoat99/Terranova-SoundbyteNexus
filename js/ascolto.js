@@ -1,4 +1,6 @@
 
+
+
 const quizButtons = document.querySelectorAll('.quiz button');
 const gameContainer = document.querySelector('.container');
 
@@ -199,7 +201,7 @@ function endGame() {
 
 
 const CLIENT_ID = 'bcef94d787dc4b9a96d6a84aa5ee8202';
-const REDIRECT_URI = 'http://localhost/Terranova-SoundbyteNexus/terranova.html';
+const REDIRECT_URI = 'http://localhost/yurii/Terranova-SoundbyteNexus/terranova.html';
 const SCOPES = ['user-read-private', 'user-read-email', 'user-top-read', 'playlist-read-private', 'playlist-read-collaborative', 'user-library-read'];
 let accessToken;
 let currentPreviewIndex = 0;
@@ -396,7 +398,6 @@ fetch(`https://api.spotify.com/v1/search?q=${encodeURIComponent(searchTerm)}&typ
 
 .catch(error => console.error('Error searching tracks:', error));
 }
-
 
 
 
