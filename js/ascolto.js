@@ -464,3 +464,26 @@ document.getElementById('bottoneplaylist').style.display = 'block';
 
 
 handleAuthResponse();
+$(document).ready(function() {
+  var sidebar = $('.sidebar');
+  var footer = $('.footer');
+  
+  $(window).scroll(function() {
+    var scroll = $(window).scrollTop();
+    var footerOffset = footer.offset().top;
+    var sidebarHeight = sidebar.outerHeight();
+    var distance = footerOffset - (scroll + sidebarHeight);
+    
+    if (distance < 0) {
+      sidebar.css({
+        position: 'absolute',
+        top: footerOffset - sidebarHeight,
+      });
+    } else {
+      sidebar.css({
+        position: 'fixed',
+        top: 0,
+      });
+    }
+  });
+});

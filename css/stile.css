@@ -123,11 +123,12 @@ main {
   justify-content: space-between;
   align-items: flex-start;
   flex-direction: row;
-  margin-top: 70px;
-  width: 80%;
-  margin-left: 300px;
+ position: relative;
+ 
+ 
   padding: 10px;
   height: 1000px;
+  overflow-y: auto;
  
 }
 
@@ -142,7 +143,9 @@ main {
   padding: auto;
   border-radius: 13px;
   position: fixed;
-  margin-top: 80px ;
+  margin-top: 70px ;
+  overflow-y: auto;
+  z-index: 2;
 }
 .album{
 
@@ -223,8 +226,9 @@ margin-bottom: 13px;
 
 
 .main {
-  width: 100%;
-  margin: 0 ;
+  
+ margin-top: 80px;
+  margin-left: 30px  ;
   padding: 10px;
   
   background: linear-gradient(var(--third-color), var(--fourth-color));
@@ -233,9 +237,11 @@ margin-bottom: 13px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-left: 50px; /* Aggiunto margine a sinistra */
+  margin-left: 350px; /* Aggiunto margine a sinistra */
 height: 900px;
-z-index: 1;
+width: 700px;
+position: relative;
+z-index: 3;
 
 }
 .sopra{
@@ -702,31 +708,16 @@ audio::-webkit-media-controls-volume-slider{
   border-radius: 10px;
 }
 
-.footer-stopped {
-  position: absolute;
-  top: 200px;
-  bottom: 10px;
-}
-footer{
-  position: relative;
-  clear: both;
+footer {
   background: #140B5C;
   width: 100%;
-  margin-top: 200px;
+  margin-top: 200px; /* Adjust as needed */
   bottom: 0;
-  left: 0;
- 
-}
-.footer-placeholder {
-  width: 100%;
-  height: 100px; /* Altezza del footer */
+  position: relative; /* Changed position to absolute */
+  z-index: 1000; /* Ensure the footer stays on top */
+  margin-bottom: 20px; /* Add space at the bottom */
 }
 
-.footer-stopped {
-  position: absolute;
-  bottom: 100px; /* Altezza del footer */
-
-}
 footer::before{
   content: '';
   position: absolute;
