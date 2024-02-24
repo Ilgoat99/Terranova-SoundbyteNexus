@@ -1,6 +1,5 @@
 
 
-
 const quizButtons = document.querySelectorAll('.quiz button');
 const gameContainer = document.querySelector('.container');
 
@@ -464,26 +463,34 @@ document.getElementById('bottoneplaylist').style.display = 'block';
 
 
 handleAuthResponse();
-$(document).ready(function() {
-  var sidebar = $('.sidebar');
-  var footer = $('.footer');
-  
-  $(window).scroll(function() {
-    var scroll = $(window).scrollTop();
-    var footerOffset = footer.offset().top;
-    var sidebarHeight = sidebar.outerHeight();
-    var distance = footerOffset - (scroll + sidebarHeight);
+document.addEventListener("DOMContentLoaded", function() {
+  function showFooter() {
+    var footer = document.querySelector('.footer');
+    var showBtn = document.getElementById('showFooterBtn');
+    var hideBtn = document.getElementById('hideFooterBtn');
     
-    if (distance < 0) {
-      sidebar.css({
-        position: 'absolute',
-        top: footerOffset - sidebarHeight,
-      });
-    } else {
-      sidebar.css({
-        position: 'fixed',
-        top: 0,
-      });
-    }
-  });
+    footer.classList.add('show');
+    showBtn.style.display = 'none';
+    hideBtn.style.display = 'block';
+  }
+  
+  // Funzione per nascondere il footer e cambiare i bottoni
+  function hideFooter() {
+    var footer = document.querySelector('.footer');
+    var showBtn = document.getElementById('showFooterBtn');
+    var hideBtn = document.getElementById('hideFooterBtn');
+    
+    footer.classList.remove('show');
+    showBtn.style.display = 'block';
+    hideBtn.style.display = 'none';
+  }
+  
+  // Aggiungiamo event listener per gestire i click sui bottoni
+  document.getElementById('showFooterBtn').addEventListener('click', showFooter);
+  document.getElementById('hideFooterBtn').addEventListener('click', hideFooter);
+  const logoutBtn = document.querySelector('.logout');
+
+logoutBtn.addEventListener('click', () => {
+    logout();
+});
 });
