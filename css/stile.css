@@ -25,10 +25,16 @@
   
 }
 
+
 body {
+
   background-color:var(--primary-color);
   margin: 0;
   padding: 0;
+
+  overflow-x: hidden; /* Nascondi lo scroll orizzontale */
+ 
+  
   display: flex;
   font-family: 'Lexend Deca';
   justify-content: start;
@@ -92,20 +98,24 @@ h2{
 
 
 
-.nav {
+nav {
   height: 70px;
-  width: 100vh;
-  max-width: 2600px;
-  margin: auto;
-  padding-left:   40px;
-  padding-right: 40px;
-
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
-  align-items: center;
+  left: 0;
+  right: 0;
+  top: 0;
+  width: 100%;
   position: fixed;
+  z-index: 10;
+  align-items: center;
+  padding-left: 40px;
+  padding-right: 40px;
+  
+  
+  
   background-color: var(--primary-color);
-z-index: 100;
   
 }
 
@@ -696,53 +706,28 @@ audio::-webkit-media-controls-volume-slider{
   height: 100px;
   border-radius: 10px;
 }
-footer {
-  background: #140B5C;
-  color: #fff;
-  text-align: center;
-  height: 100px; /* Altezza fissa */
+
+#content {
+  position: relative;
+  height: 100%;
+}
+.qualcosa,.qualcosa1{
   width: 100%;
-  position: fixed;
-  bottom: 0;
-  opacity: 0; /* Il footer è inizialmente nascosto */
-  transition: opacity 1s ease; /* Aggiunta transizione dell'opacità */
-  font-size: 18px;
-  z-index: 5;
+  height: 300px;
+  margin-top: 20px;
+  border: 1px solid white;
 }
 
-.footer.show {
-  opacity: 1; /* Mostra il footer */
-}
-
-
-footer::before{
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 100px;
-  height: 1px;
-  width: 100%;
- 
-}
-footer .content{
-  max-width: 1250px;
-  margin: auto;
-  padding: 30px 40px 40px 40px;
-}
-footer .content .top{
+.media-icons{
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  height: 100px;
+  width: 100%;
+  gap: 30px;
   margin-bottom: 50px;
 }
-.content .top .logo-details{
-  color: #fff;
-  font-size: 30px;
-}
-.content .top .media-icons{
-  display: flex;
-}
-.content .top .media-icons a{
+ .media-icons a{
   height: 40px;
   width: 40px;
   margin: 0 8px;
@@ -757,46 +742,73 @@ footer .content .top{
   justify-content: center;
   align-items: center;
 }
-.top .media-icons a:nth-child(1){
+.media-icons a:nth-child(1){
   background: #4267B2;
 }
-.top .media-icons a:nth-child(1):hover{
+.media-icons a:nth-child(1):hover{
   color: #4267B2;
   background: #fff;
 }
-.top .media-icons a:nth-child(2){
+ .media-icons a:nth-child(2){
   background: #1DA1F2;
 }
-.top .media-icons a:nth-child(2):hover{
+ .media-icons a:nth-child(2):hover{
   color: #1DA1F2;
   background: #fff;
 }
-.top .media-icons a:nth-child(3){
+ .media-icons a:nth-child(3){
   background: #E1306C;
 }
-.top .media-icons a:nth-child(3):hover{
+ .media-icons a:nth-child(3):hover{
   color: #E1306C;
   background: #fff;
 }
-.top .media-icons a:nth-child(4){
+.media-icons a:nth-child(4){
   background: #0077B5;
 }
-.top .media-icons a:nth-child(4):hover{
+.media-icons a:nth-child(4):hover{
   color: #0077B5;
   background: #fff;
 }
-.top .media-icons a:nth-child(5){
+ .media-icons a:nth-child(5){
   background: #FF0000;
 }
-.top .media-icons a:nth-child(5):hover{
+ .media-icons a:nth-child(5):hover{
   color: #FF0000;
   background: #fff;
 }
 
 
+  #overlay {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Colore di sfondo semi-trasparente */
+    z-index: 999; /* Assicura che l'overlay sia sopra a tutti gli altri elementi */
+    animation-duration: 1s;
+}
+@keyframes slideIn {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0%);
+  }
+}
 
-/* Stile del bottone */
-#showFooterBtn,#hideFooterBtn {
+@keyframes slideOut {
+  from {
+    transform: translateY(0%);
+  }
+  to {
+    transform: translateY(100%);
+  }
+}
+
+#buttone {
   position: fixed;
   bottom: 100px;
   right: 20px;
@@ -808,6 +820,38 @@ footer .content .top{
   border-radius: 5px;
   cursor: pointer;
   z-index: 5;
+}
+
+/* Quando il checkbox è selezionato, mostra l'overlay */
+#buttone:checked ~ #overlay {
+  display: block;
+}
+#buttone:not(:checked) ~ #overlay {
+  animation-name: slideOut;
+}
+
+.close{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 100px;
+}
+#closeButtone {
+  
+  
+  height: 50px;
+  
+  padding: 10px 20px;
+  background: none;
+  border: none;
+  color: white;
+  border: none;
+  
+  cursor: pointer;
+  z-index: 5;
+  
+  top: 30px;
 }
 
 

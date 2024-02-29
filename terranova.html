@@ -14,11 +14,12 @@
   </head>
   <body>
     <nav class="nav">
-      <div class="logo"><i class='bx bxl-spotify bx-lg' style='color:#1ed75f'></i>
-      <h1>Spotiquiz</h1>
+      <div class="logo">
+        <i class='bx bxl-spotify bx-lg' style='color:#1ed75f'></i>
+        <h1>Spotiquiz</h1>
       </div>
-      <i id="sun" class='bx bxs-sun bx-sm' style='color:#ffffff'  ></i>
-      <i id="moon" class='bx bxs-moon bx-sm' style='color:#ffffff' ></i>
+      <div class="mode"> <i id="sun" class='bx bxs-sun bx-sm' style='color:#ffffff'  ></i>
+        <i id="moon" class='bx bxs-moon bx-sm' style='color:#ffffff' ></i></div>
     </nav>
     <main>
       <div class="sidebar">
@@ -48,7 +49,7 @@
           </div>
         
        
-          <button class="logout" id="logoutBtn">
+          <button class="logout" onclick="logout()">
             <i class='bx bx-log-out bx-md' style='color:#ffffff'></i>
         </button>
         </div>
@@ -88,7 +89,7 @@
         <div class="quiz-container">
           <!-- Primo quiz -->
           <div class="quiz" id="quiz1">
-            <div class="img1"><img class="quizimg" src="img/easy.png" alt="" srcset=""></div>
+            <div class="img1"><img class="quizimg" src="img/SPotiquiz.png" alt="" srcset=""></div>
               
               <button class="button-quiz" id="easy-quiz-btn">Play</button>
           </div>
@@ -151,25 +152,28 @@
       
       
     
-    
   </main>
-  <button id="showFooterBtn"><i class='bx bx-info-circle bx-md bx-tada-hover'></i></button> <!-- Bottone per mostrare il footer -->
-  <button id="hideFooterBtn" style="display: none;"><i class='bx bx-x bx-md'></i></button> <!-- Bottone per nascondere il footer -->
-  <footer class="footer">
-    <div class="content">
-      <div class="top">
-        <div class="logo-details">
-          <i class="fab fa-slack"></i>
-          <span class="logo_name">Spotiquiz</span>
-        </div>
-        <div class="media-icons">
-          <a href="#"><i class='bx bxl-instagram'></i></a>
-          <a href="#"><i class='bx bxl-facebook'></i></a>
-          <a href="#"><i class='bx bxl-twitter' ></i></a>
-          
-      </div>
+  <button id="buttone"><i class='bx bx-info-circle bx-md bx-tada-hover'></i></button>
+<div class="content">
+  <div id="overlay">
+    <div class="close">
       
-  </footer>
-      
+      <button id="closeButtone"><i class='bx bx-x bx-md'></i></button></div>
+    
+    <div class="contenuto">
+      <section>
+
+      </section>
+      <div class="qualcosa"></div>
+      <div class="qualcosa1"></div>
+      <div class="media-icons">
+        <a href="#"><i class='bx bxl-instagram'></i></a>
+        <a href="#"><i class='bx bxl-facebook'></i></a>
+        <a href="#"><i class='bx bxl-twitter' ></i></a>
+        
+    </div>
+  </div>
+</div>
+
   </body>
 </html>

@@ -463,34 +463,24 @@ document.getElementById('bottoneplaylist').style.display = 'block';
 
 
 handleAuthResponse();
-document.addEventListener("DOMContentLoaded", function() {
-  function showFooter() {
-    var footer = document.querySelector('.footer');
-    var showBtn = document.getElementById('showFooterBtn');
-    var hideBtn = document.getElementById('hideFooterBtn');
-    
-    footer.classList.add('show');
-    showBtn.style.display = 'none';
-    hideBtn.style.display = 'block';
-  }
-  
-  // Funzione per nascondere il footer e cambiare i bottoni
-  function hideFooter() {
-    var footer = document.querySelector('.footer');
-    var showBtn = document.getElementById('showFooterBtn');
-    var hideBtn = document.getElementById('hideFooterBtn');
-    
-    footer.classList.remove('show');
-    showBtn.style.display = 'block';
-    hideBtn.style.display = 'none';
-  }
-  
-  // Aggiungiamo event listener per gestire i click sui bottoni
-  document.getElementById('showFooterBtn').addEventListener('click', showFooter);
-  document.getElementById('hideFooterBtn').addEventListener('click', hideFooter);
-  const logoutBtn = document.querySelector('.logout');
 
-logoutBtn.addEventListener('click', () => {
-    logout();
-});
-});
+  // Aggiunge un event listener al bottone
+  document.getElementById('buttone').addEventListener('click', function() {
+    // Mostra l'overlay con animazione
+    var overlay = document.getElementById('overlay');
+    overlay.style.display = 'block';
+    overlay.style.animationName = 'slideIn'; // Usa l'animazione slideIn
+  });
+
+  // Aggiunge un event listener al bottone di chiusura
+  document.getElementById('closeButtone').addEventListener('click', function() {
+    // Nasconde l'overlay con animazione
+    var overlay = document.getElementById('overlay');
+    overlay.style.animationName = 'slideOut'; // Usa l'animazione slideOut
+    // Ritarda la chiusura dell'overlay per lasciare il tempo all'animazione di completarsi
+    setTimeout(function() {
+      overlay.style.display = 'none';
+    }, 1000); // Tempo pari alla durata dell'animazione
+    // Deseleziona il checkbox
+    document.getElementById('button').checked = false;
+  });
