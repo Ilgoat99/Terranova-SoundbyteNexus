@@ -8,26 +8,38 @@
 </head>
 <body>
 <button onclick="showGame()">Start Guessing!</button>
-<div id="gameContainer" class="container hidden">
-    <h2>Guess the Song</h2>
-    <div class="song-info">
-        <div>
-            <h3 id="songTitle">Song Title</h3>
+<div id="gameContainer" class="container">
+    <div class="content">
+        <nav> 
+            <div class="logo">
+                <i class='bx bxl-spotify bx-lg' style='color:#1ed75f'></i>
+                <h1>Spotiquiz</h1>
+              </div>
+              <button>X</button>
+        </nav>
+        
+        
+        <div class="song-info">
+            <h2>Guess the Song</h2>
+            <img src="" alt="" srcset="">
+            <button onclick="startGame()">Start Game</button>
         </div>
-        <button onclick="startGame()">Start Game</button>
-    </div>
-    <div id="gameArea" class="hidden">
-        <audio id="audio" controls>
-            <source src="" type="audio/mp3">
-            Your browser does not support the audio element.
-        </audio>
-        <div id="options">
-            <!-- Buttons for song options will be added here dynamically -->
+        <div id="gameArea" ">
+            <button>X</button>
+            <div>
+                <h3 id="songTitle">Song Title</h3>
+            </div>
+            <audio id="audio" controls>
+                <source src="" type="audio/mp3">
+                Your browser does not support the audio element.
+            </audio>
+            <div id="options">
+                <!-- Buttons for song options will be added here dynamically -->
+            </div>
+            <p id="result"></p>
+            <p id="timer">Time: 0</p>
+            <p id="totalScore">Total Score: <span id="totalScoreValue">0</span></p>
         </div>
-        <input type="text" id="guessInput" placeholder="Enter your guess">
-        <button onclick="checkGuess()">Check</button>
-        <p id="result"></p>
-        <p id="timer">Time: 0</p>
     </div>
 </div>
 <script src="guess.js"></script>
