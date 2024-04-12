@@ -3,11 +3,11 @@ body {
     margin: 0;
     padding: 0;
 }
-audio{
+#audio{
     display: none;
 }
 
-.container {
+.containerr {
     width: 100%;
     height: 100vh;
     background-color: aqua;
@@ -16,7 +16,7 @@ audio{
     
 }
 
-.content {
+.contentr {
     display: flex;
     gap: 100px;
     flex-direction: column;
@@ -26,7 +26,7 @@ audio{
     width: 100%;
     height: 100%;
 }
-nav{
+.navr{
     height: 70px;
     width: 100%;
     display: flex;

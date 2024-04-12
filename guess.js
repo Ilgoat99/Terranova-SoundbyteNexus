@@ -71,7 +71,7 @@ var timeElapsed = 0;
 var songCounter = 10; // Contatore delle canzoni
 
 function showGame() {
-    var gameContainer = document.getElementById('gameContainer');
+    var gameContainer = document.getElementById('gameContainerr');
     var songInfo = document.querySelector('.song-info');
     gameContainer.style.display = "block"; // Mostra il gameContainer
     songInfo.style.display = "block"; // Mostra il div song-info
