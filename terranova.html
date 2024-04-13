@@ -141,24 +141,36 @@
       <h1>Want more?</h1>
       <button onclick="showGame()" class="guesss">Guess the song</button>
     </div>
-    <div id="gameContainer" class="container">
-      <div class="content">
-          <nav> 
-              <div class="logo">
-                  <i class='bx bxl-spotify bx-lg' style='color:#1ed75f'></i>
-                  <h1>Spotiquiz</h1>
+    
+      <div class="sotto">
+
+        <audio id="audio-player" controls>
+        <source src="" type="audio/mp3">
+        Il tuo browser non supporta l'elemento audio.
+      </audio>
+      </div>
+    </div>
+      
+      
+    
+  </main>
+  <div id="gameContainerr" class="containerr">
+      <div class="contentr">
+           
+              <div class="closeGame">
+                <button class="closeG" id="closeG"><i class='bx bx-x bx-md' style='color:#ffffff'  ></i></button>
                 </div>
-                <button>X</button>
-          </nav>
+                
+         
           
           
-          <div class="song-info">
+          <div class="song-infor">
               <h2>Guess the Song</h2>
-              <img src="" alt="" srcset="">
+              <img src="img/unnamed.png" alt="" srcset="">
               <button onclick="startGame()">Start Game</button>
           </div>
           <div id="gameArea" >
-              <button>X</button>
+             
               <div>
                   <h3 id="songTitle">Song Title</h3>
               </div>
@@ -177,18 +189,6 @@
           
       </div>
   </div>
-      <div class="sotto">
-
-        <audio id="audio-player" controls>
-        <source src="" type="audio/mp3">
-        Il tuo browser non supporta l'elemento audio.
-      </audio>
-      </div>
-    </div>
-      
-      
-    
-  </main>
   <button id="buttone"><i class='bx bx-info-circle bx-md bx-tada-hover'></i></button>
 <div class="content">
   <div id="overlay">

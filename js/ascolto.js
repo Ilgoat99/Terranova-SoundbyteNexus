@@ -572,17 +572,18 @@ handleAuthResponse();
   var songCounter = 10; // Contatore delle canzoni
   function showGame() {
     // Codice per mostrare il gioco
-    var gameContainer = document.getElementById('gameContainer');
+    var gameContainer = document.getElementById('gameContainerr');
     gameContainer.style.display = "block"; // Mostra il gameContainer
-    var songInfo = document.querySelector('.song-info');
-    songInfo.style.display = "block"; // Mostra il div song-info
+    var songInfo = document.querySelector('.song-infor');
+    songInfo.style.display = "flex"; // Mostra il div song-info
+
 }
 
   function startGame() {
     var gameArea = document.getElementById('gameArea');
     gameArea.style.display = "block"; // Mostra il div gameArea
 
-    var songInfo = document.querySelector('.song-info');
+    var songInfo = document.querySelector('.song-infor');
     songInfo.style.display = "none"; // Nasconde il div song-info
 
     if (songCounter > 0) {
@@ -746,3 +747,23 @@ handleAuthResponse();
     var gameArea = document.getElementById('gameArea');
     gameArea.style.display = "none";
   };
+
+  function closeGame() {
+    // Nascondi il gameContainer
+    document.getElementById('gameContainerr').style.display = 'none';
+    
+    stopGame();
+    
+  }
+  function stopGame(){
+    var audio = document.getElementById('audio');
+    audio.pause();
+    
+
+  }
+  
+  // Aggiungi un event listener al click sul bottone con id 'closeG'
+  document.getElementById('closeG').addEventListener('click', function() {
+    closeGame();
+    document.getElementById('gameSummary').style.display= 'none';
+  });
