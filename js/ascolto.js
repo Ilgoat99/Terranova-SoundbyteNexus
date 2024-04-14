@@ -136,7 +136,7 @@ function checkAnswer(selectedAnswer,userName,userEmail) {
     };
 
     const xhr = new XMLHttpRequest();
-    xhr.open('POST', 'si.php', true);
+    xhr.open('POST', 'database.php', true);
     xhr.setRequestHeader('Content-Type', 'application/json');
 
     xhr.onload = function() {
@@ -487,7 +487,6 @@ handleAuthResponse();
 
 
 
-
   var songs = [
     {
         audio: 'audio/My Name Is .mp3',
@@ -496,60 +495,117 @@ handleAuthResponse();
     },
     {
         audio: 'audio/Lollipop .mp3',
-        options: ['What do you mean', 'Slim Shady', 'Lollipop', 'Heartbreaker', 'Nevermind'],
+        options: ['What do you mean', 'Bad Blood', 'Lollipop', 'Heartbreaker', 'Nevermind'],
         correctAnswer: 2 // Indice della risposta corretta nell'array delle opzioni
     },
     {
         audio: 'audio/1st of Tha Month .mp3',
-        options: ['My Name is', 'Slim Shady', 'Love the way you lie', 'Lose yourself', 'Not afraid'],
-        correctAnswer: 0 // Indice della risposta corretta nell'array delle opzioni
+        options: ['Uptown Funk', '1 of Tha Month', 'Bad Habits', '24', 'Not afraid'],
+        correctAnswer: 1 // Indice della risposta corretta nell'array delle opzioni
     },
     {
         audio: 'audio/A Milli .mp3',
-        options: ['What do you mean', 'Slim Shady', 'Lollipop', 'Heartbreaker', 'Nevermind'],
-        correctAnswer: 2 // Indice della risposta corretta nell'array delle opzioni
+        options: ['Deja Vu', 'Billie Jean', 'Stay', 'Thriller', 'A Milli'],
+        correctAnswer: 4 // Indice della risposta corretta nell'array delle opzioni
     },
     {
-        audio: 'audio/Aint No Fun .mp3',
-        options: ['My Name is', 'Slim Shady', 'Love the way you lie', 'Lose yourself', 'Not afraid'],
+        audio: 'audio/Ain t No Fun .mp3',
+        options: ['Aint bo Fun', 'Home', 'Easy on me', 'Jump', 'Never Again'],
         correctAnswer: 0 // Indice della risposta corretta nell'array delle opzioni
     },
     {
-        audio: 'audio/24s (Vocals Only) .mp3',
-        options: ['What do you mean', 'Slim Shady', 'Lollipop', 'Heartbreaker', 'Nevermind'],
+        audio: 'audio/24.mp3',
+        options: ['24', 'Slim Shady', 'Lollipop', 'In the end', 'Good 4 you'],
         correctAnswer: 2 // Indice della risposta corretta nell'array delle opzioni
     },
     {
         audio: 'audio/All Falls Down .mp3',
-        options: ['My Name is', 'Slim Shady', 'Love the way you lie', 'Lose yourself', 'Not afraid'],
-        correctAnswer: 0 // Indice della risposta corretta nell'array delle opzioni
+        options: ['Saturn', 'falling down', 'redrum', 'All Falls Down', 'Memory'],
+        correctAnswer: 3 // Indice della risposta corretta nell'array delle opzioni
     },
     {
         audio: 'audio/Ambitionz Az A Ridah .mp3',
-        options: ['What do you mean', 'Slim Shady', 'Lollipop', 'Heartbreaker', 'Nevermind'],
+        options: ['What?', 'Fe!n', 'Ambitionz Az A Ridah', 'Unbreak my heart', 'Nobody else'],
         correctAnswer: 2 // Indice della risposta corretta nell'array delle opzioni
     },
     {
         audio: 'audio/Award Tour .mp3',
-        options: ['My Name is', 'Slim Shady', 'Love the way you lie', 'Lose yourself', 'Not afraid'],
-        correctAnswer: 0 // Indice della risposta corretta nell'array delle opzioni
-    },
-    {
-        audio: 'audio/Best I Ever Had .mp3',
-        options: ['What do you mean', 'Slim Shady', 'Lollipop', 'Heartbreaker', 'Nevermind'],
+        options: ['Home', 'Silver', 'Award Tour', 'Lose everithing', 'fainth'],
         correctAnswer: 2 // Indice della risposta corretta nell'array delle opzioni
     },
     {
-        audio: 'audio/Big Pimpin .mp3',
-        options: ['My Name is', 'Slim Shady', 'Love the way you lie', 'Lose yourself', 'Not afraid'],
-        correctAnswer: 0 // Indice della risposta corretta nell'array delle opzioni
+        audio: 'audio/Best I Ever Had .mp3',
+        options: ['Tea', 'In the Shadws', 'Best I Ever Had', 'Heartbreaker', 'Way 2 sexy'],
+        correctAnswer: 2 // Indice della risposta corretta nell'array delle opzioni
     },
     {
-        audio: 'audio/Best I Ever Had .mp3',
-        options: ['What do you mean', 'Slim Shady', 'Lollipop', 'Heartbreaker', 'Nevermind'],
-        correctAnswer: 2 // Indice della risposta corretta nell'array delle opzioni
+        audio: 'audio/Big Pimpin.mp3',
+        options: ['R3hab', 'Big Pimpin', 'greedy', 'I LUV IT', 'Not afraid'],
+        correctAnswer: 1 // Indice della risposta corretta nell'array delle opzioni
+    },
+    {
+        audio: 'audio/California Love.mp3',
+        options: ['Why always me', 'Jezebel', 'Rockstar', 'Crush', 'California Love'],
+        correctAnswer: 4 // Indice della risposta corretta nell'array delle opzioni
+    },
+    {
+      audio: 'audio/I LUV IT .mp3',
+      options: ['I LUV IT', 'II MOST WANTED', 'Rockstar', 'obsessed', 'OKLOSER'],
+      correctAnswer: 0 // Indice della risposta corretta nell'array delle opzioni
+    },
+    {
+    audio: 'audio/yes and.mp3',
+    options: ['7 rins', 'yes and', 'Positions', 'magnetic', 'California girls'],
+    correctAnswer: 1 // Indice della risposta corretta nell'array delle opzioni
     },
     
+    {
+      audio: 'audio/Saturn.mp3',
+      options: ['me and you', 'Snooze', 'Saturn', 'Jesus Walk', 'Like that'],
+      correctAnswer: 2 // Indice della risposta corretta nell'array delle opzioni
+     },
+     {
+      audio: 'audio/redrum.mp3',
+      options: ['illusion', 'redrum', 'Water', 'Stunt 101', 'sucsessful'],
+      correctAnswer: 1 // Indice della risposta corretta nell'array delle opzioni
+     },
+     {
+      audio: 'audio/Strangers.mp3',
+      options: ['Strangers', 'Sweet But Psycho', 'Stranger', 'New Rules', 'California Love'],
+      correctAnswer: 0 // Indice della risposta corretta nell'array delle opzioni
+     },
+     {
+      audio: 'audio/exes.mp3',
+      options: ['believe me', 'exes', 'hunger', 'Crime', 'feather'],
+      correctAnswer: 1 // Indice della risposta corretta nell'array delle opzioni
+     },
+     {
+      audio: 'audio/Like That.mp3',
+      options: ['Why always me', 'see you again', 'Love it', 'Like That', 'Home'],
+      correctAnswer: 3 // Indice della risposta corretta nell'array delle opzioni
+     },
+     {
+      audio: 'audio/vampire.mp3',
+      options: ['vampire', 'traitor', 'true', 'Crush', 'seriously?'],
+      correctAnswer: 0 // Indice della risposta corretta nell'array delle opzioni
+     },
+     {
+      audio: 'audio/Too Sweet.mp3',
+      options: ['Not Now', 'Sweety', 'Too Sweet', 'obsessed', 'sucsessful'],
+      correctAnswer: 2 // Indice della risposta corretta nell'array delle opzioni
+     },
+     {
+      audio: 'audio/we cant be friends.mp3',
+      options: ['F.R.I.E.N.D.S', 'loving on me', 'Rockstar', 'Scared', 'we cant be friends'],
+      correctAnswer: 4 // Indice della risposta corretta nell'array delle opzioni
+     },
+     {
+      audio: 'audio/greedy.mp3',
+      options: ['greedy', 'heather', 'Home', 'Nothing is true', 'True love'],
+      correctAnswer: 0 // Indice della risposta corretta nell'array delle opzioni
+     },
+              
+  
 ];
 
 
@@ -579,17 +635,22 @@ handleAuthResponse();
 
 }
 
+
   function startGame() {
+    
+   
+
+
     var gameArea = document.getElementById('gameArea');
     gameArea.style.display = "block"; // Mostra il div gameArea
-
+    
     var songInfo = document.querySelector('.song-infor');
     songInfo.style.display = "none"; // Nasconde il div song-info
 
     if (songCounter > 0) {
         songCounter--; // Decrementa il contatore delle canzoni
     } else {
-        endGame(); // Termina il gioco se il contatore è zero
+        endGame1(); // Termina il gioco se il contatore è zero
         return;
     }
 
@@ -655,6 +716,7 @@ handleAuthResponse();
             }, 1000);
         }, 3000);
     };
+ 
 
     // Quando l'audio termina, avvia una nuova canzone dopo un ritardo di 3 secondi
     audio.onended = function() {
@@ -671,7 +733,7 @@ handleAuthResponse();
     };
   }
 
-  function endGame() {
+  function endGame1() {
     // Ferma la riproduzione dell'audio
     var audio = document.getElementById('audio');
     audio.pause();
@@ -682,36 +744,43 @@ handleAuthResponse();
 
     // Crea dinamicamente il div del riepilogo del gioco
     var gameSummaryDiv = document.createElement('div');
-    gameSummaryDiv.id = 'gameSummary';
+    gameSummaryDiv.id = 'gameSummary1';
     gameSummaryDiv.innerHTML = '<h2>Game Summary</h2>' +
         '<p>Total Score: <span id="summaryTotalScore">' + totalScore + '</span></p>' +
         '<button id="replayButton" onclick="replayGame()">Replay</button>';
     
     // Inserisci il div del riepilogo del gioco nel body del documento
     document.body.appendChild(gameSummaryDiv);
-  }
+  } 
 
   function showGameSummary() {
     document.getElementById('gameArea').style.display = 'none'; // Nasconde il campo di gioco
-    document.getElementById('gameSummary').style.display = 'block'; // Mostra il riepilogo del gioco
+    document.getElementById('gameSummary1').style.display = 'block'; // Mostra il riepilogo del gioco
   }
 
   function replayGame() {
-    document.getElementById('gameArea').style.display = 'block'; // Mostra nuovamente il campo di gioco
-    document.getElementById('gameSummary').style.display = 'none'; // Nasconde il riepilogo del gioco
+    // Azzeramento del punteggio totale
+    totalScore = 0;
+    document.getElementById('totalScoreValue').textContent = '0';
 
-    // Nasconde il div del punteggio totale e il bottone replay
-    var totalScoreContainer = document.getElementById('totalScore');
-    totalScoreContainer.textContent = '';
-    var replayButton = document.getElementById('replayButton');
-    replayButton.style.display = 'none';
+    // Nasconde il riepilogo del gioco
+    var gameSummary = document.getElementById('gameSummary1');
+    if (gameSummary) {
+        gameSummary.parentNode.removeChild(gameSummary); // Rimuove il nodo dal DOM
+    }
+
+    // Mostra nuovamente il campo di gioco
+    var gameArea = document.getElementById('gameArea');
+    gameArea.style.display = 'block';
 
     // Resetta i valori e avvia una nuova partita
     score1 = 0;
-    totalScore = 0;
     songCounter = 10;
     startGame();
-  }
+}
+
+
+
 
   function checkGuess(selectedIndex, correctIndex, resultElement) {
     var resultText;
@@ -748,22 +817,60 @@ handleAuthResponse();
     gameArea.style.display = "none";
   };
 
-  function closeGame() {
-    // Nascondi il gameContainer
-    document.getElementById('gameContainerr').style.display = 'none';
-    
-    stopGame();
-    
-  }
-  function stopGame(){
-    var audio = document.getElementById('audio');
-    audio.pause();
-    
 
+ // Funzione per nascondere e rimuovere il div delle regole del gioco dal DOM
+function removeRulesDiv() {
+  var rulesDiv = document.getElementById('rulesDiv');
+  if (rulesDiv) {
+      document.body.removeChild(rulesDiv);
   }
-  
-  // Aggiungi un event listener al click sul bottone con id 'closeG'
-  document.getElementById('closeG').addEventListener('click', function() {
-    closeGame();
-    document.getElementById('gameSummary').style.display= 'none';
+}
+
+var RulesButton = document.getElementById('RulesButton');
+RulesButton.addEventListener('click', function() {
+  // Creazione del div per le regole del gioco
+  var rulesDiv = document.createElement('div');
+  rulesDiv.id = 'rulesDiv';
+  rulesDiv.style.position = 'fixed';
+  rulesDiv.style.top = '50%';
+  rulesDiv.style.left = '50%';
+  rulesDiv.style.transform = 'translate(-50%, -50%)';
+  rulesDiv.style.backgroundColor = 'black';
+  rulesDiv.style.padding = '20px';
+  rulesDiv.style.border = '2px solid #343a40';
+  rulesDiv.style.borderRadius = '10px';
+  rulesDiv.style.zIndex = '100000000000';
+  rulesDiv.innerHTML = '<h2 style="margin-bottom: 20px;"> Guess the Song</h2>' +
+      '<p>You have 30 seconds to guess the playing song.</p>' +
+      '<p>You can get 30 points for every song. One second of listening takes 1 point.</p>' +
+      '<p>There are 10 songs per game, so you can get 300 points.</p>' +
+      '<p>Good luck!</p>' +
+      '<button id="closeRulesButton" style="margin-top: 20px; padding: 10px 20px; background-color: #343a40; color: #fff; border: none; border-radius: 5px; cursor: pointer;">Close</button>';
+
+  // Aggiungi il div delle regole del gioco al body del documento
+  document.body.appendChild(rulesDiv);
+
+  // Aggiungi un gestore di eventi per il pulsante di chiusura
+  var closeRulesButton = document.getElementById('closeRulesButton');
+  closeRulesButton.addEventListener('click', function() {
+      // Rimuovi il div delle regole del gioco quando viene premuto il pulsante di chiusura
+      removeRulesDiv();
   });
+});
+
+document.getElementById('closeG').addEventListener('click', function() {
+  document.getElementById('gameContainerr').style.display = 'none';
+  var gameArea = document.getElementById('gameArea');
+  gameArea.style.display = "none";
+
+  // Interrompi la riproduzione dell'audio corrente
+  var audio = document.getElementById('audio');
+  audio.pause();
+  audio.volume = 0;
+
+  // Rimuovi l'evento "onended" dall'elemento audio per evitare che il gioco si avvii nuovamente
+  audio.onended = null;
+
+  removeRulesDiv(); // Nascondi e rimuovi il div delle regole del gioco dal DOM
+  document.getElementById('gameSummary').style.display = 'none'; // Nasconde il riepilogo del gioco
+});
