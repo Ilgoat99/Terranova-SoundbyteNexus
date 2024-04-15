@@ -766,7 +766,7 @@ handleAuthResponse();
     // Nasconde il riepilogo del gioco
     var gameSummary = document.getElementById('gameSummary1');
     if (gameSummary) {
-        gameSummary.parentNode.removeChild(gameSummary); // Rimuove il nodo dal DOM
+        gameSummary.parentNode.removeChild(gameSummary1); // Rimuove il nodo dal DOM
     }
 
     // Mostra nuovamente il campo di gioco
@@ -872,5 +872,5 @@ document.getElementById('closeG').addEventListener('click', function() {
   audio.onended = null;
 
   removeRulesDiv(); // Nascondi e rimuovi il div delle regole del gioco dal DOM
-  document.getElementById('gameSummary').style.display = 'none'; // Nasconde il riepilogo del gioco
+  document.getElementById('gameSummary1').style.display = 'none'; // Nasconde il riepilogo del gioco
 });
